@@ -1,0 +1,1 @@
+-- vim.treesitter.start() -- enable treesitter highting for code examples
