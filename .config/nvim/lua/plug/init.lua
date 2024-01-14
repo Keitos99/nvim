@@ -10,4 +10,15 @@ return {
     },
     ft = "4gl",
   },
+  {
+    dir = vim.fn.expand("~") .. "/Documents/Workspace/Github/cvs.nvim",
+    lazy = false,
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    config = function()
+      local Helper = require("config.helper")
+      require("cvs").setup(Helper.find_root)
+    end,
+  },
 }

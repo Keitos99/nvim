@@ -33,7 +33,7 @@ local function open_qflist_on_delete(datas)
   local command = "rg"
   local module_name = helper.get_module(filename)
   local fname_parent = helper.get_parent_dir(filename)
-  local root_dir = helper.get_root(fname_parent)
+  local root_dir = helper.find_root(fname_parent)
 
   if module_name == "" then
     return

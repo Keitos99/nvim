@@ -136,7 +136,7 @@ function M.get_py_root(file_path)
 end
 
 ---@return string
-function M.get_root(fname)
+function M.find_root(fname)
   local path = fname
   ---@type string[]
   local roots = {}
