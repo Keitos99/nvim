@@ -60,7 +60,7 @@ function M.config()
   end
 
   local python =
-      Terminal:new({ cmd = require("config.helper"):get_python_path(vim.api.nvim_buf_get_name(0)), hidden = true })
+      Terminal:new({ cmd = require("config.helper").get_python_path(vim.api.nvim_buf_get_name(0)), hidden = true })
 
   function _PYTHON_TOGGLE()
     python:toggle()
@@ -184,6 +184,6 @@ M.keys = {
   { mode = "i", "<m-3>", "<cmd>lua _HORIZONTAL_TERM()<CR>" },
 }
 
-M.cmd = { "Lazygit", "PDBUILD" }
+M.cmd = { "Lazygit" }
 
 return M
