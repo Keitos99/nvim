@@ -2,6 +2,7 @@ local M = {
   url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
   name = "lsp_lines",
   event = "LspAttach",
+  -- enabled = false, -- BUG: Lazy.nvim can not reach the website
 }
 
 M.config = function()
