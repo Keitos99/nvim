@@ -34,6 +34,7 @@ M.tree_sitter_parsers = {
   "markdown",
   "markdown_inline",
   "latex",
+  "vimdoc"
 }
 
 M.jdtls = {
