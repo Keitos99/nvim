@@ -1,1 +1,1 @@
--- vim.treesitter.start() -- enable treesitter highting for code examples
+vim.treesitter.start() -- enable treesitter highlighting for code examples
