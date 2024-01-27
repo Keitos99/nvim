@@ -19,7 +19,7 @@ function M.config()
     providers = {
       "lsp",
       "treesitter",
-      -- "regex",
+      "regex",
     },
     -- delay: delay in milliseconds
     delay = 100,
@@ -37,11 +37,11 @@ function M.config()
     -- modes_denylist: modes to not illuminate, this overrides modes_allowlist
     modes_denylist = {},
     -- modes_allowlist: modes to illuminate, this is overriden by modes_denylist
-    modes_allowlist = {},
+    providers_regex_syntax_denylist = {},
     -- providers_regex_syntax_denylist: syntax to not illuminate, this overrides providers_regex_syntax_allowlist
     -- Only applies to the 'regex' provider
     -- Use :echom synIDattr(synIDtrans(synID(line('.'), col('.'), 1)), 'name')
-    providers_regex_syntax_denylist = {},
+    modes_allowlist = {},
     -- providers_regex_syntax_allowlist: syntax to illuminate, this is overriden by providers_regex_syntax_denylist
     -- Only applies to the 'regex' provider
     -- Use :echom synIDattr(synIDtrans(synID(line('.'), col('.'), 1)), 'name')
