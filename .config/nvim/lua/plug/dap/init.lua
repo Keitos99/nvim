@@ -1,17 +1,18 @@
 local icons = require("config.ui.icons").dap
 local signs = {
-  { name = "DapBreakpoint",          text = icons.BreakPoint,            highlight = "DiagnosticSignError" },
-  { name = "DapStopped",             text = icons.StopPoint,             highlight = "DiagnosticWarn" },
-  { name = "DapBreakpointRejected",  text = icons.BreakPointRejected,    highlight = "DiagnosticError" },
+  { name = "DapBreakpoint", text = icons.BreakPoint, highlight = "DiagnosticSignError" },
+  { name = "DapStopped", text = icons.StopPoint, highlight = "DiagnosticWarn" },
+  { name = "DapBreakpointRejected", text = icons.BreakPointRejected, highlight = "DiagnosticError" },
   { name = "DapBreakpointCondition", text = icons.ConditionalBreakpoint, highlight = "DiagnosticInfo" },
-  { name = "DapLogPoint",            text = icons.LogPoint,              highlight = "DiagnosticInfo" },
+  { name = "DapLogPoint", text = icons.LogPoint, highlight = "DiagnosticInfo" },
 }
 return {
-  {
-    "rcarriga/nvim-dap-ui", -- a UI for nvim-dap
-  },
+
   {
     "mfussenegger/nvim-dap", -- debug adapter protocol client implementation for neovim
+    dependencies = {
+      "rcarriga/nvim-dap-ui", -- a UI for nvim-dap
+    },
     -- event = "BufReadPre",
     config = function()
       local dap = require("dap")

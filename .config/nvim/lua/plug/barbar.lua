@@ -1,7 +1,6 @@
 local M = {
   "romgrk/barbar.nvim",
-  event = { "BufAdd", --[[ "BufEnter" ]] },
-  cmd = { "BufferNext", "BufferPrevious" },
+  event = { "BufAdd" },
   dependencies = { "nvim-tree/nvim-web-devicons" },
 }
 
