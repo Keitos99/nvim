@@ -10,12 +10,14 @@ end
 local kanagawa = require("plug.colorschemes.kanagawa")
 local rosepine = require("plug.colorschemes.rosepine")
 local modus = require("plug.colorschemes.modus")
+local sonokai = require("plug.colorschemes.sonokai")
 
 -- must be loaded before everything else
-modus.lazy = false
-modus.priority = 1000
+sonokai.lazy = false
+sonokai.priority = 1000
 
 local M = {
+  sonokai,
   modus,
   kanagawa,
   rosepine,
