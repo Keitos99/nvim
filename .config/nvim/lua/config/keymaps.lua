@@ -56,8 +56,8 @@ map("v", ">", ">gv", opts)
 map({ "n", "v" }, "gy", '"+y', opts)
 map({ "n", "v" }, "gp", '"+p', opts)
 
--- paste without changing the registers
-map("v", "p", '"_dP', opts)
+-- paste without changing the registers, when you are in the insert mode
+map("x", "p", '"_dP', opts)
 
 -- select all
 map('n', '<leader>a', ':keepjumps normal! ggVG<cr>')
