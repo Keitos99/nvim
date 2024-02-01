@@ -38,7 +38,6 @@ local options = {
 }
 
 vim.opt.shortmess:append("c")
-vim.g.loaded_perl_provider = 0 -- turning off, because it is not used
 
 -- Set leader key
 vim.g.mapleader = " "

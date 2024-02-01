@@ -91,7 +91,6 @@ function M.config()
       }),
     },
     sources = {
-      { name = "e4gl" },
       { name = "nvim_lua" },
       { name = "nvim_lsp" },
       { name = "luasnip" },
@@ -117,6 +116,11 @@ function M.config()
   require("cmp").setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
     sources = {
       { name = "dap" },
+    },
+  })
+  require("cmp").setup.filetype({"4gl"}, {
+    sources = {
+      { name = "e4gl" },
     },
   })
 end
