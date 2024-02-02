@@ -1,13 +1,7 @@
 local M = {
   "windwp/nvim-autopairs",
   event = "InsertEnter",
-}
-
-function M.config()
-  -- Setup nvim-cmp.
-  local npairs = require("nvim-autopairs")
-
-  npairs.setup({
+  opts = {
     check_ts = true,
     ts_config = {
       lua = { "string", "source" },
@@ -25,10 +19,15 @@ function M.config()
       cursor_pos_before = true,
       keys = "qwertyuiopzxcvbnmasdfghjkl",
       manual_position = true,
-      highlight = 'Search',
-      highlight_grey='Comment'
+      highlight = "Search",
+      highlight_grey = "Comment",
     },
-  })
+  },
+}
+
+function M.config(_, opts)
+  local npairs = require("nvim-autopairs")
+  npairs.setup(opts)
 
   -- If you want insert `(` after select function or method item
   local cmp_autopairs = require("nvim-autopairs.completion.cmp")
