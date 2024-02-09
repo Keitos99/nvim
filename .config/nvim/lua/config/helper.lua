@@ -177,21 +177,6 @@ function M.find_root(fname)
   return root
 end
 
-function M.mysplit(inputstr, sep)
-  if sep == nil then
-    sep = "%s"
-  end
-  local t = {}
-  for str in string.gmatch(inputstr, "([^" .. sep .. "]+)") do
-    table.insert(t, str)
-  end
-  return t
-end
-
-function M.table_length(T)
-  return #T
-end
-
 function M.get_module(fname)
   -- action if its lua file
   local nvim_path = "nvim/lua"
@@ -215,7 +200,7 @@ function M.region_to_text(region)
   local text = ""
   local maxcol = vim.v.maxcol + 1
   for line, cols in vim.spairs(region) do
-    line = line -1
+    line = line - 1
     local endcol = cols[2] == maxcol and -1 or cols[2]
     local chunk = vim.api.nvim_buf_get_text(0, line, cols[1], line, endcol, {})[1]
     text = ("%s%s\n"):format(text, chunk)

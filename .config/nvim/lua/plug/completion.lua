@@ -118,9 +118,13 @@ function M.config()
       { name = "dap" },
     },
   })
+
   require("cmp").setup.filetype({"4gl"}, {
     sources = {
       { name = "e4gl" },
+      { name = "luasnip" },
+      { name = "buffer" },
+      { name = "path" },
     },
   })
 end

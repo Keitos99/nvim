@@ -79,7 +79,7 @@ local function open_qflist_on_delete(datas)
       end
 
       vim.notify("The File " .. filename .. " is been used. Opening a qflist")
-      if helper.table_length(lines) > 0 then
+      if #lines > 0 then
         vim.fn.setqflist({}, " ", { title = "Todo", items = results })
         vim.cmd("cwindow")
       end

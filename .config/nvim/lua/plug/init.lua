@@ -1,5 +1,6 @@
 return {
   { "mfussenegger/nvim-dap-python", ft = "python", module = false },
+  -- plugins that i wrote
   {
     dir = vim.fn.expand("~") .. "/Documents/Workspace/Github/tree-sitter-e4glide",
     dependencies = {
@@ -16,6 +17,16 @@ return {
     config = function()
       local Helper = require("config.helper")
       require("cvs").setup(Helper.find_root)
+    end,
+  },
+  {
+    dir = vim.fn.expand("~") .. "/Documents/Workspace/Github/tohtml.nvim",
+    lazy = false,
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    config = function()
+      require("tohtml")
     end,
   },
 }
