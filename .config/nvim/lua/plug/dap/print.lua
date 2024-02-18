@@ -1,7 +1,13 @@
 local M = {
   "andrewferrier/debugprint.nvim",
   opts = {},
-  ft = {"java", "lua", "cpp", "python", "4gl"},
+  keys = {
+    "g?P",
+    "g?p",
+    "g?v",
+    "g?V",
+  },
+  cmd = "DeleteDebugPrints",
 }
 
 return M

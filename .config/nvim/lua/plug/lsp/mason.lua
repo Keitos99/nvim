@@ -4,7 +4,7 @@ local M = {
   dependencies = {
     "williamboman/mason-lspconfig.nvim", -- connects mason with lspconfig
   },
-  event = "BufReadPre",
+  event = "BufReadPost",
 }
 
 local mason_config = require("config.globals").mason
