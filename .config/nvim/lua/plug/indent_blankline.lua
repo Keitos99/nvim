@@ -31,9 +31,7 @@ function M.addRainbowHook()
 end
 
 function M.config()
-  local config = {}
-  config = M.addRainbowHook()
-
+  local config = M.addRainbowHook()
   require("ibl").setup(config)
 end
 

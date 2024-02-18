@@ -2,13 +2,8 @@ local M = {
   "nvim-treesitter/nvim-treesitter",
   event = "BufReadPost",
   dependencies = {
-    {
-      "nvim-treesitter/playground",
-      cmd = { "TSPlaygroundToggle", "TSCaptureUnderCursor" },
-    },
     "nvim-treesitter/nvim-treesitter-textobjects",
     "windwp/nvim-ts-autotag",
-    "lukas-reineke/indent-blankline.nvim",
   },
   build = ":TSUpdate",
 }
@@ -20,6 +15,11 @@ function M.config()
     enable = true, -- false will disable the whole extension
     disable = treesitter.disable_large, -- list of language that will be disabled
     additional_vim_regex_highlighting = false,
+  })
+
+  treesitter.add_plugin("autotag", {
+    enable = true,
+    filetypes = { "html", "xml" },
   })
 
   treesitter.add_plugin("textobjects", {
@@ -58,30 +58,6 @@ function M.config()
         ["<A-h>"] = "@parameter.inner",
       },
     },
-  })
-
-  treesitter.add_plugin("playground", {
-    enable = true,
-    disable = {},
-    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-    persist_queries = false, -- Whether the query persists across vim sessions
-    keybindings = {
-      toggle_query_editor = "o",
-      toggle_hl_groups = "i",
-      toggle_injected_languages = "t",
-      toggle_anonymous_nodes = "a",
-      toggle_language_display = "I",
-      focus_language = "f",
-      unfocus_language = "F",
-      update = "R",
-      goto_node = "<cr>",
-      show_help = "?",
-    },
-  })
-
-  treesitter.add_plugin("autotag", {
-    enable = true,
-    filetypes = { "html", "xml" },
   })
 
   treesitter.start()

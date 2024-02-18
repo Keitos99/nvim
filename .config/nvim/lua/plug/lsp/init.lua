@@ -1,10 +1,11 @@
 local M = {
   {
     "neovim/nvim-lspconfig",
-    event = "BufReadPre",
+    event = { "BufReadPost", "BufNewFile" },
     dependencies = {
       "nvim-lua/plenary.nvim", -- useful functions
       "ray-x/lsp_signature.nvim", -- show function signature when you type
+      { "folke/neodev.nvim", opts = true },
     },
     config = function()
       local lsp = require("plug.lsp.handlers")
@@ -21,7 +22,6 @@ local M = {
       end
     end,
   },
-  require("plug.lsp.neodev"),
   require("plug.lsp.none-ls"), -- formatter and linter
   require("plug.lsp.mason"),
   require("plug.lsp.trouble"),
