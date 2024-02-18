@@ -13,7 +13,6 @@ return {
     dependencies = {
       "rcarriga/nvim-dap-ui", -- a UI for nvim-dap
     },
-    -- event = "BufReadPre",
     config = function()
       local dap = require("dap")
       local keymap = vim.keymap

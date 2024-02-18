@@ -1,6 +1,6 @@
 local M = {
   "anuvyklack/hydra.nvim",
-  lazy = false, -- must always be loaded
+  event = "VeryLazy",
 }
 
 function M.config()

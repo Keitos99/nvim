@@ -4,8 +4,7 @@ local M = {
   "folke/todo-comments.nvim",
   dependecies = "nvim-lua/plenary.nvim",
   cmd = { "TodoTrouble", "TodoTelescope" },
-  event = "BufReadPost",
-  -- lazy = false,
+  event = "VeryLazy",
 }
 
 M.keys = {
