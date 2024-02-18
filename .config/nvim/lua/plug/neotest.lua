@@ -25,7 +25,6 @@ end
 
 local M = {
   "nvim-neotest/neotest",
-  ft = { "python" },
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
@@ -38,11 +37,6 @@ local M = {
     "TestStop",
   },
 }
-
-function M.cond()
-  local has_pytest = vim.fn.system(python_path .. " -m pytest --version 2>/dev/null") ~= ""
-  return has_pytest
-end
 
 M.keys = {
   {
@@ -105,4 +99,5 @@ function M.config()
   })
   create_user_cmds()
 end
+
 return M
