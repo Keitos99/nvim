@@ -17,10 +17,20 @@ vim.opt.runtimepath:prepend(lazy_path)
 
 require("lazy").setup("plug", {
   defaults = { lazy = true },
+  install = {
+    missing = true,
+    colorscheme = { "sonokai" },
+  },
   performance = {
     cache = {
       enabled = true,
       path = lazy_cache,
+    },
+    rtp = {
+      disabled_plugins = {
+        "netrwPlugin",
+        "tutor",
+      },
     },
   },
   checker = {
