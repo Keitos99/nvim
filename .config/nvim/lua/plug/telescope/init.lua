@@ -1,3 +1,4 @@
+---@type LazySpec
 local M = {
   "nvim-telescope/telescope.nvim",
   branch = "0.1.x", -- release branch, which can have breaking changes
@@ -5,6 +6,34 @@ local M = {
     "nvim-lua/plenary.nvim",
   },
   cmd = { "Telescope" },
+  keys = {
+
+    { "<leader>ff", "<cmd>Telescope find_files<cr>" },
+    {
+      "<leader>fg",
+      function()
+        vim.ui.input({ prompt = "Grep > " }, function(input)
+          local builtin = require("telescope.builtin")
+          builtin.grep_string({
+            search = input,
+          })
+        end)
+      end,
+    },
+    { "<leader>fG", "<cmd>Telescope grep_string<cr>" },
+    { "<leader>fo", "<cmd>Telescope oldfiles<cr>", desc = "recently opened files" },
+    { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "vim help" },
+    { "<leader>fm", "<cmd>Telescope marks<cr>", desc = "media files" },
+    { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "marks" },
+    { "<leader>fk", "<cmd>Telescope keymaps<cr>" },
+    { "<leader>fO", "<cmd>Telescope vim_options<cr>" },
+    { "<leader>fr", "<cmd>Telescope resume<cr>" },
+    { "<leader>fs", "<cmd>Telescope persisted<cr>", desc = "persited sessions" },
+    { "<leader>fp", "<cmd>Telescope projects<cr>", desc = "projects" },
+    { "<leader>f?", "<cmd>Telescope search_history<cr>", desc = "search history" },
+    { "<leader>f;", "<cmd>Telescope command_history<cr>", desc = "command-line history" },
+    { "<leader>fc", "<cmd>Telescope commands<cr>", desc = "execute command" },
+  },
 }
 
 function M.config()
@@ -89,41 +118,10 @@ function M.config()
         },
       },
     },
-    pickers = {
-      -- Default configuration for builtin pickers goes here:
-      -- picker_name = {
-      --   picker_config_key = value,
-      --   ...
-      -- }
-      -- Now the picker_config_key will be applied every time you call this
-      -- builtin picker
-    },
     extensions = {
       ["ui-select"] = {
-        require("telescope.themes").get_dropdown({
-          -- even more opts
-        }),
-
-        -- TODO: wrap in a functions
-        -- pseudo code / specification for writing custom displays, like the one
-        -- for "codeactions"
-        -- specific_opts = {
-        --   [kind] = {
-        --     make_indexed = function(items) -> indexed_items, width,
-        --     make_displayer = function(widths) -> displayer
-        --     make_display = function(displayer) -> function(e)
-        --     make_ordinal = function(e) -> string
-        --   },
-        --   -- for example to disable the custom builtin "codeactions" display
-        --      do the following
-        --   codeactions = false,
-        -- }
+        require("telescope.themes").get_dropdown({}),
       },
-      -- Your extension configuration goes here:
-      -- extension_name = {
-      --   extension_config_key = value,
-      -- }
-      -- please take a look at the readme of the extension you want to configure
     },
   })
 

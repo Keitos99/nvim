@@ -1,6 +1,6 @@
 local options = {
   backup = false,                          -- creates a backup file
-  cmdheight = 0,                           -- more space in the neovim command line for displaying messages
+  cmdheight = 1,                           -- more space in the neovim command line for displaying messages
   completeopt = { "menuone", "noselect" }, -- mostly just for cmp
   conceallevel = 2,                        -- so that `` is visible in markdown files
   fileencoding = "utf-8",                  -- the encoding written to a file
@@ -33,10 +33,15 @@ local options = {
   sidescrolloff = 8,
   guifont = "monospace:h10",               -- the font used in graphical neovim applications
   spelllang = { "en_us", "de" },           -- Language for spelling
-  spellsuggest = { "best", "9" },          -- show only nine spell suggestion at most
+  spellsuggest = { "best", "5" },          -- show only nine spell suggestion at most
 }
 
+vim.wo.colorcolumn = '100' -- show a columnline after the 100th char
+vim.opt.splitkeep = "screen"
 vim.opt.shortmess:append("c")
+for k, v in pairs(options) do
+  vim.opt[k] = v
+end
 
 -- Set leader key
 vim.g.mapleader = " "
@@ -53,11 +58,7 @@ vim.g.loaded_node_provider = 0
 vim.g.loaded_python_provider = 0
 vim.g.loaded_python3_provider = 0
 
-for k, v in pairs(options) do
-  vim.opt[k] = v
-end
-vim.wo.colorcolumn = '100' -- show a columnline after the 100th char
 
 vim.cmd("set whichwrap+=<,>,[,],h,l")
 vim.cmd([[set iskeyword+=-]])
-vim.cmd([[set formatoptions-=cro]]) -- TODO: this doesn't seem to work
+vim.cmd([[set formatoptions-=cro]])

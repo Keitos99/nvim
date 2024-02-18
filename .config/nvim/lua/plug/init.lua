@@ -21,12 +21,16 @@ return {
   },
   {
     dir = vim.fn.expand("~") .. "/Documents/Workspace/Github/tohtml.nvim",
-    lazy = false,
+    event = "VeryLazy",
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
     config = function()
-      require("tohtml")
+      require("tohtml").setup({
+        filetype_to_parser_language = {
+          ["4gl"] = "e4glide",
+        },
+      })
     end,
   },
 }

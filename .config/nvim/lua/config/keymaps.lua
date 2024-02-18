@@ -18,8 +18,7 @@
 -- <C = Control
 -- <A or <M = Alt
 
-
-local Plugins = require('plug')
+local Plugins = require("plug")
 local function has(name)
   return Plugins[name] ~= nil
 end
@@ -37,15 +36,7 @@ map("n", "<C-k>", "<C-w>k", opts)
 map("n", "<C-l>", "<C-w>l", opts)
 
 -- buffers
-if has("bufferline.nvim") then
-  map("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
-  map("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
-  map("n", "<S-q>", ":bdelete<CR>", opts)
-else
-  map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
-  map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
-  map("n", "<S-q>", ":bdelete<CR>", opts)
-end
+map("n", "<S-q>", ":bdelete<CR>", opts)
 
 -- Visual --
 -- Stay in indent mode
@@ -60,8 +51,7 @@ map({ "n", "v" }, "gp", '"+p', opts)
 map("x", "p", '"_dP', opts)
 
 -- select all
-map('n', '<leader>a', ':keepjumps normal! ggVG<cr>')
-
+map("n", "<leader>a", ":keepjumps normal! ggVG<cr>")
 
 -- Visual Block --
 -- Move text up and down

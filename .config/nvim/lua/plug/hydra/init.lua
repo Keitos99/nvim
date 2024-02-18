@@ -4,9 +4,7 @@ local M = {
 }
 
 function M.config()
-  require("plug.hydra.telescope")
   require("plug.hydra.windows")
-  require("plug.hydra.options")
 end
 
 return M
