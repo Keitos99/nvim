@@ -1,7 +1,15 @@
 local M = {
   "rcarriga/nvim-notify",
-  lazy = false,
-  priority = 100,
+  event = "VeryLazy",
+  keys = {
+    {
+      "<leader>un",
+      function()
+        require("notify").dismiss({ silent = true, pending = true })
+      end,
+      desc = "Dismiss all Notifications",
+    },
+  },
 }
 
 function M.config()
@@ -27,10 +35,6 @@ function M.config()
 
     notification(msg, ...)
   end
-
-  vim.api.nvim_create_user_command("Dismiss", function()
-    require("notify").dismiss({})
-  end, { nargs = "*", desc = "Dismiss Notification" })
 end
 
 return M

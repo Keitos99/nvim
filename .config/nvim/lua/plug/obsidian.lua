@@ -19,6 +19,7 @@ return {
         path = "~/Documents/Notes/",
       },
     },
+    preferred_link_style = "markdown",
     daily_notes = {
       -- Optional, if you keep daily notes in a separate directory.
       folder = "diary",
@@ -43,6 +44,9 @@ return {
 
         -- You can also add more custom ones...
       },
+    },
+    attachments = {
+      img_folder = "media",
     },
   },
 }

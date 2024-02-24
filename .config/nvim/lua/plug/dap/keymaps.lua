@@ -1,61 +1,81 @@
-local dap_mappings = {
+return {
   {
-    "c",
+    "<leader>dc",
     function()
       require("dap").continue()
     end,
+    desc = "Dap continue",
     { silent = true },
   },
   {
-    "rc",
+    "<leader>drl",
+    function()
+      require("dap").run_last()
+    end,
+    { silent = true, desc = "Run the last debug session again" },
+  },
+  {
+    "<leader>drc",
     function()
       require("dap").run_to_cursor()
     end,
     { silent = true, desc = "run to cursor" },
   },
   {
-    "rl",
-    function()
-      require("dap").run_last()
-    end,
-    { silent = true },
+    "<leader>dX",
+    ":lua require'dap'.disconnect({ terminateDebuggee = false })<CR>",
+    { exit = true, silent = true, desc = "Disconnect from the debug session" },
   },
-
-  { "X", ":lua require'dap'.disconnect({ terminateDebuggee = false })<CR>", { exit = true, silent = true } },
   {
-    "x",
+    "<leader>dx",
     function()
       require("dap").close()
     end,
-    { silent = true },
+    { silent = true, desc = "Close debug session" },
   },
   {
-    "b",
+    "<leader>db",
     function()
       require("dap").toggle_breakpoint()
     end,
-    { silent = true },
+    { silent = true, desc = "Toggle breakpoint" },
   },
-  { "t", ":lua require('dapui').toggle({ reset = true })<CR>", { nowait = true, desc = "toggle UI" } },
-  { "f", "<CMD>lua require('dapui').float_element()<CR>", { silent = true } },
-  { "R", "<CMD>lua require('dapui').float_element('repl', {position = 'center', enter = true})<CR>", { silent = true } },
-  { "S", "<CMD>lua require('dapui').float_element('stacks', {enter = true})<CR>", { silent = true } },
   {
-    "B",
+    "<leader>dt",
+    ":lua require('dapui').toggle({ reset = true })<CR>",
+    { nowait = true, desc = "Toggle UI" },
+  },
+  {
+    "<leader>df",
+    "<CMD>lua require('dapui').float_element()<CR>",
+    { silent = true, desc = "Toggle UI" },
+  },
+  {
+    "<leader>dR",
+    "<CMD>lua require('dapui').float_element('repl', {position = 'center', enter = true})<CR>",
+    { silent = true, desc = "Toggle reply" },
+  },
+  {
+    "<leader>dS",
+    "<CMD>lua require('dapui').float_element('stacks', {enter = true})<CR>",
+    { silent = true, desc = "Toggle stacks ui" },
+  },
+  {
+    "<leader>dB",
     function()
       require("dap").set_breakpoint(vim.fn.input({ prompt = "Breakpoint condition: " }))
     end,
-    { silent = true },
+    { silent = true, desc = "Set conditional breakpoints" },
   },
   {
     -- the log message wil be printed to the dap-repl
-    "lb",
+    "<leader>dlb",
     ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>",
-    { nowait = true },
+    { nowait = true, desc = "set logpoints" },
   },
 
   {
-    "f",
+    "<leader>df",
     function()
       local ok, jdtls = pcall(require, "jdtls")
 
@@ -71,7 +91,7 @@ local dap_mappings = {
   },
 
   {
-    "n",
+    "<leader>dn",
     function()
       local ok, jdtls = pcall(require, "jdtls")
       if not ok then
@@ -84,35 +104,11 @@ local dap_mappings = {
       jdtls.test_nearest_method()
     end,
   },
+  { "<F1>", ":lua require('dapui').toggle({ layout = 1, reset = true })<CR>" },
+  { "<F2>", ":lua require('dapui').toggle({ layout = 2, reset = true })<CR>" },
+  { "<F3>", ":lua require('dapui').toggle({ layout = 3, reset = true })<CR>" },
 
-  -- { "J", require("dap").step_over },
-  -- { "L", require("dap").step_into },
-  -- { "H", require("dap").step_out },
+  { "<F8>", ":lua require('dap').step_over()<CR>" },
+  { "<F7>", ":lua require('dap').step_into()<CR>" },
+  { "<S-F8>", ":lua require('dap').step_out()<CR>" },
 }
-
-local keys = {}
-for _, value in pairs(dap_mappings) do
-  local mapping = value[1]
-  local dap_action = value[2]
-
-  if mapping == "J" or mapping == "L" or mapping == "H" then
-    mapping = string.lower(mapping)
-  end
-
-  if dap_action ~= nil then
-      -- local opts = { noremap = true, silent = true }
-      -- local keymap = vim.keymap.set
-    -- keymap("n", "<leader>d" .. mapping, dap_action, opts)
-    table.insert(keys, { "<leader>d" .. mapping, dap_action })
-  end
-
-end
-table.insert(keys, { "<F1>",  ":lua require('dapui').toggle({ layout = 1, reset = true })<CR>"})
-table.insert(keys, { "<F2>",  ":lua require('dapui').toggle({ layout = 2, reset = true })<CR>"})
-table.insert(keys, { "<F3>", ":lua require('dapui').toggle({ layout = 3, reset = true })<CR>" })
-
--- these are the same dap keymaps as on android studio
-table.insert(keys, { '<F8>', ":lua require('dap').step_over()<CR>" })
-table.insert(keys, { "<F7>", ":lua require('dap').step_into()<CR>" })
-table.insert(keys, { "<S-F8>", ":lua require('dap').step_out()<CR>" })
-return keys

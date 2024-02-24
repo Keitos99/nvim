@@ -21,7 +21,7 @@ return {
   },
   {
     dir = vim.fn.expand("~") .. "/Documents/Workspace/Github/tohtml.nvim",
-    event = "VeryLazy",
+    cmd = "TSToHTML",
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
