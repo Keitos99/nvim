@@ -1,7 +1,7 @@
 local M = {}
 
 M.mason = {
-  tools = { "autopep8", "sql-formatter", "stylua", "beautysh" },
+  tools = { "sql-formatter", "stylua" },
   lsps = {
     "lua_ls",
     "pyright",
@@ -10,7 +10,7 @@ M.mason = {
     "bashls",
     "yamlls",
     "tsserver",
-    "marksman", 
+    "marksman",
     --[[ "sqls" ]]
   },
   install_dir = vim.fn.stdpath("data") .. "/mason",
