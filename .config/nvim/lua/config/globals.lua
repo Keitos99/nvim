@@ -1,8 +1,18 @@
 local M = {}
 
 M.mason = {
-  tools = { "autopep8", "clang-format", "sql-formatter", "stylua", "beautysh" },
-  lsps = { "lua_ls", "pyright", "vimls", "clangd", "bashls", "yamlls", "tsserver", "marksman", --[[ "sqls" ]] },
+  tools = { "autopep8", "sql-formatter", "stylua", "beautysh" },
+  lsps = {
+    "lua_ls",
+    "pyright",
+    "vimls",
+    "clangd",
+    "bashls",
+    "yamlls",
+    "tsserver",
+    "marksman", 
+    --[[ "sqls" ]]
+  },
   install_dir = vim.fn.stdpath("data") .. "/mason",
 }
 
@@ -34,7 +44,7 @@ M.tree_sitter_parsers = {
   "markdown",
   "markdown_inline",
   "latex",
-  "vimdoc"
+  "vimdoc",
 }
 
 M.jdtls = {
