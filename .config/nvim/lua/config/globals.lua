@@ -11,7 +11,7 @@ M.mason = {
     "yamlls",
     "tsserver",
     "marksman",
-    --[[ "sqls" ]]
+    "sqls",
   },
   install_dir = vim.fn.stdpath("data") .. "/mason",
 }
