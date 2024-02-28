@@ -61,7 +61,7 @@ end
 
 return {
   capabilities = handlers.capabilities,
-  cmd = { "sqls", "-config", os.getenv("HOME") .. "/.config/sqls/config.yml" },
+  cmd = { vim.fn.stdpath("data") .. "/mason/bin/sqls", "-config", os.getenv("HOME") .. "/.config/sqls/config.yml" },
   on_attach = function(client, bufnr)
     local sqls = require("sqls")
     sqls.on_attach(client, bufnr)

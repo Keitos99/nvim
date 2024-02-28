@@ -53,7 +53,6 @@ M.setup_lsps = function(mason_lspconfig)
 
   lspconfig.util.default_config = default
   for _, server_name in ipairs(mason_lspconfig.get_installed_servers()) do
-    -- HACK: workaround, because still save lua-language-server as sumneko_lua and lspconfig only knows lua_ls
     local opts = {}
     local has_settings, server_opts = pcall(require, "plug.lsp.settings." .. server_name)
 
