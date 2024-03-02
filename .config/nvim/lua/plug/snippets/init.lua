@@ -1,25 +1,30 @@
 local M = {
   "L3MON4D3/LuaSnip",
   dependencies = {
-    "rafamadriz/friendly-snippets",
+    {
+      "rafamadriz/friendly-snippets",
+      config = function()
+        require("luasnip.loaders.from_vscode").lazy_load()
+      end,
+    },
+    {
+      "nvim-cmp",
+      dependencies = {
+        "saadparwaiz1/cmp_luasnip",
+      },
+      opts = function(_, opts)
+        opts.snippet = {
+          expand = function(args)
+            require("luasnip").lsp_expand(args.body)
+          end,
+        }
+      end,
+    },
   },
 }
 
 function M.config()
-  local status_ok, ls = pcall(require, "luasnip")
-  if not status_ok then
-    vim.notify("Could not load luasnip")
-    return
-  end
-
-  -- some shorthands...
-  local snippet = ls.snippet
-  -- local node = ls.snippet_node
-  local text = ls.text_node
-  local insert = ls.insert_node
-  local func = ls.function_node
-  -- local choice = ls.choice_node
-  -- local dynamicn = ls.dynamic_node
+  local ls = require("luasnip")
 
   -- some keymaps
   local keymap = vim.keymap.set
