@@ -3,6 +3,6 @@ local M = {
   lazy = false,
   opts = {
     project_dir = "~/.config/projects-config/",
-  }
+  },
 }
 return M

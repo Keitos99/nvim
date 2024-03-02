@@ -27,7 +27,7 @@ M.root_patterns = {
   "package.json",
   "src",
   ".stylua.toml",
-  -- ".cvsignore",
+  ".4gl",
 }
 
 M.tree_sitter_parsers = {
