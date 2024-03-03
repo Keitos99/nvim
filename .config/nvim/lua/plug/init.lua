@@ -10,7 +10,12 @@ return {
   },
   {
     dir = vim.fn.expand("~") .. "/Documents/Workspace/Github/cvs.nvim",
-    lazy = false,
+    keys = {
+      "CVSCompare",
+      "CVSReplace",
+      "CVSBlame",
+      "CVSChose",
+    },
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
