@@ -7,6 +7,19 @@ return {
     branch = "0.1.x", -- release branch, which can have breaking changes
     dependencies = {
       "nvim-lua/plenary.nvim",
+      { -- If encountering errors, see telescope-fzf-native README for install instructions
+        "nvim-telescope/telescope-fzf-native.nvim",
+
+        -- `build` is used to run some command when the plugin is installed/updated.
+        -- This is only run then, not every time Neovim starts up.
+        build = "make",
+
+        -- `cond` is a condition used to determine whether this plugin should be
+        -- installed and loaded.
+        cond = function()
+          return vim.fn.executable("make") == 1
+        end,
+      },
     },
     cmd = { "Telescope" },
     keys = {
@@ -126,6 +139,7 @@ return {
       })
 
       require("telescope").load_extension("projects")
+      require('telescope').load_extension('fzf')
     end,
   },
   {
@@ -139,6 +153,8 @@ return {
         ["]"] = { name = "+next" },
         ["["] = { name = "+prev" },
         ["<leader>d"] = { name = "+debug" },
+        ["<leader>f"] = { name = "+find" },
+        ["<leader>r"] = { name = "+rename" },
       },
     },
   },
