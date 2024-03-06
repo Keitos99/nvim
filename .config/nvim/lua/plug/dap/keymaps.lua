@@ -124,6 +124,7 @@ return {
   { "<F3>", ":lua require('dapui').toggle({ layout = 3, reset = true })<CR>" },
 
   { "<F8>", ":lua require('dap').step_over()<CR>" },
+  { "<F9>", ":lua require('dap').continue()<CR>" },
   { "<F7>", ":lua require('dap').step_into()<CR>" },
   { "<S-F8>", ":lua require('dap').step_out()<CR>" },
 }
