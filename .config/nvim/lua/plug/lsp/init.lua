@@ -27,7 +27,16 @@ local M = {
   require("plug.lsp.trouble"),
   require("plug.lsp.lines"),
   require("plug.lsp.fidget"),
-  { "mfussenegger/nvim-jdtls", ft = "java", module = true },
+  {
+    "mfussenegger/nvim-jdtls",
+    ft = "java",
+    module = true,
+    config = function()
+      local jdtls = require("jdtls")
+      local config = require("plug.lsp.settings.jdtls")
+      jdtls.start_or_attach(config)
+    end,
+  },
   {
     "simaxme/java.nvim",
     ft = "java",
