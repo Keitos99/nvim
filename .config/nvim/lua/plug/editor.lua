@@ -37,18 +37,18 @@ return {
         end,
       },
       { "<leader>fG", "<cmd>Telescope grep_string<cr>" },
-      { "<leader>fo", "<cmd>Telescope oldfiles<cr>", desc = "recently opened files" },
-      { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "vim help" },
-      { "<leader>fm", "<cmd>Telescope marks<cr>", desc = "media files" },
-      { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "marks" },
+      { "<leader>fo", "<cmd>Telescope oldfiles<cr>",        desc = "recently opened files" },
+      { "<leader>fh", "<cmd>Telescope help_tags<cr>",       desc = "vim help" },
+      { "<leader>fm", "<cmd>Telescope marks<cr>",           desc = "media files" },
+      { "<leader>fb", "<cmd>Telescope buffers<cr>",         desc = "marks" },
       { "<leader>fk", "<cmd>Telescope keymaps<cr>" },
       { "<leader>fO", "<cmd>Telescope vim_options<cr>" },
       { "<leader>fr", "<cmd>Telescope resume<cr>" },
-      { "<leader>fs", "<cmd>Telescope persisted<cr>", desc = "persited sessions" },
-      { "<leader>fp", "<cmd>Telescope projects<cr>", desc = "projects" },
-      { "<leader>f?", "<cmd>Telescope search_history<cr>", desc = "search history" },
+      { "<leader>fs", "<cmd>Telescope persisted<cr>",       desc = "persited sessions" },
+      { "<leader>fp", "<cmd>Telescope projects<cr>",        desc = "projects" },
+      { "<leader>f?", "<cmd>Telescope search_history<cr>",  desc = "search history" },
       { "<leader>f;", "<cmd>Telescope command_history<cr>", desc = "command-line history" },
-      { "<leader>fc", "<cmd>Telescope commands<cr>", desc = "execute command" },
+      { "<leader>fc", "<cmd>Telescope commands<cr>",        desc = "execute command" },
     },
     config = function()
       local status_ok, telescope = pcall(require, "telescope")
@@ -139,7 +139,7 @@ return {
       })
 
       require("telescope").load_extension("projects")
-      require('telescope').load_extension('fzf')
+      require("telescope").load_extension("fzf")
     end,
   },
   {
@@ -211,7 +211,7 @@ return {
       },
     },
     opts = {
-      signs = true, -- show icons in the signs column
+      signs = true,      -- show icons in the signs column
       sign_priority = 8, -- sign priority
       -- keywords recognized as todo comments
       keywords = {
@@ -260,5 +260,21 @@ return {
         },
       })
     end,
+  },
+  {
+    "stevearc/aerial.nvim",
+    keys = { { "<leader>la", "<cmd>AerialToggle!<CR>" }, },
+    opts = {
+      on_attach = function(bufnr)
+        -- Jump forwards/backwards with '{' and '}'
+        vim.keymap.set("n", "]a", "<cmd>AerialNext<CR>", { buffer = bufnr })
+        vim.keymap.set("n", "[a", "<cmd>AerialPrev<CR>", { buffer = bufnr })
+      end,
+    },
+    -- Optional dependencies
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons",
+    },
   },
 }

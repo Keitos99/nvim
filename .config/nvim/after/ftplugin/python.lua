@@ -23,10 +23,10 @@ py_dap.setup(debug_server, {
 
 -- adding my own launch configurations to dap launcher
 -- The debugpy options below are from https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings
-table.insert(require('dap').configurations.python, {
-  type = 'python',
-  request = 'launch',
-  name = 'Launch project main.py',
-  program = 'main.py',
-  console = 'integratedTerminal',
+table.insert(require("dap").configurations.python, {
+  type = "python",
+  request = "launch",
+  name = "Launch project main.py",
+  program = "main.py",
+  console = "integratedTerminal",
 })

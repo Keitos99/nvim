@@ -10,7 +10,7 @@ return {
   },
   {
     dir = vim.fn.expand("~") .. "/Documents/Workspace/Github/cvs.nvim",
-    keys = {
+    cmd = {
       "CVSCompare",
       "CVSReplace",
       "CVSBlame",
