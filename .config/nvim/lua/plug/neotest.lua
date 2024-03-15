@@ -1,4 +1,4 @@
-local helper = require("config.helper")
+local helper = require("config.helper.python")
 local python_path = helper.get_python_path()
 
 local function create_user_cmds()

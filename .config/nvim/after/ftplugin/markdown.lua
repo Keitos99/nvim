@@ -1,6 +1,6 @@
 local function conceal_strikethrough()
   -- markdown strikethrough for ~~strike~~
-  vim.cmd([[
+vim.cmd([[
 hi MyStrikethrough gui=strikethrough
 " hi Conceal         guifg=red
 call matchadd('MyStrikethrough', '\~\~\zs.\+\ze\~\~')

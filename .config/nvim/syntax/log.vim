@@ -64,13 +64,6 @@ syn match logMacAddress '\<\x\{2}\(:\x\{2}\)\{5}'
 syn match logFilePath   '\<\w:\\[^\n|,; ()'"\]{}]\+'
 syn match logFilePath   '[^a-zA-Z0-9"']\@<=\/\w[^\n|,; ()'"\]{}]\+'
 
-
-" Java highlight groups
-" NOTE: maybe highlight groups can be combined?
-syn match javaPackage '\(\([a-zA-Z_$][a-zA-Z0-9_$]*\.\)\+[a-zA-Z_$][a-zA-Z0-9_$]*\)\s*'
-syn match javaException '\(\([a-zA-Z_$][a-zA-Z0-9_$]*\.\)\+[a-zA-Z_$][a-zA-Z0-9_$]*\)\s*Exception'
-
-
 " Syslog Columns
 "---------------------------------------------------------------------------
 " Syslog hostname, program and process number columns
@@ -154,11 +147,6 @@ hi def link logLevelNotice Character
 hi def link logLevelInfo Repeat
 hi def link logLevelDebug Debug
 hi def link logLevelTrace Comment
-
-hi def link javaPackage Conditional
-hi def link javaException ErrorMsg
-
-
 
 let b:current_syntax = 'log'
 

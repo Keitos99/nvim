@@ -1,10 +1,10 @@
-local helper = require("config.helper")
+local helper = require("config.helper.python")
 
 return {
   on_init = function(client)
     -- HACK: redfining pythonPath, so that even on a project change it will use the correct one
     -- using infos from https://github.com/neovim/nvim-lspconfig/wiki/Project-local-settings#configure-in-your-personal-settings-initlua
-    client.config.settings.python.pythonPath = helper:get_python_path(vim.api.nvim_buf_get_name(0))
+    client.config.settings.python.pythonPath = helper.get_python_path(vim.api.nvim_buf_get_name(0))
     client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
     return true
   end,

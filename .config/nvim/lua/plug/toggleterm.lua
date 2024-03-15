@@ -59,13 +59,6 @@ function M.config()
     lazygit:toggle()
   end
 
-  local python =
-      Terminal:new({ cmd = require("config.helper").get_python_path(vim.api.nvim_buf_get_name(0)), hidden = true })
-
-  function _PYTHON_TOGGLE()
-    python:toggle()
-  end
-
   local float_term = Terminal:new({
     direction = "float",
     on_open = function(term)

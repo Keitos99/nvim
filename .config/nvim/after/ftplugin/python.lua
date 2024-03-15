@@ -1,4 +1,4 @@
-local helper = require("config.helper")
+local helper = require("config.helper.python")
 local status_ok, py_dap = pcall(require, "dap-python")
 local debug_server = os.getenv("HOME") .. "/dev/microsoft/debugpy/bin/python"
 
