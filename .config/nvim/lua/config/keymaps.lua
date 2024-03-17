@@ -18,11 +18,6 @@
 -- <C = Control
 -- <A or <M = Alt
 
-local Plugins = require("plug")
-local function has(name)
-  return Plugins[name] ~= nil
-end
-
 local opts = { noremap = true, silent = true }
 local map = vim.keymap.set
 
@@ -67,21 +62,3 @@ map({ "n", "x", "o" }, "N", "Nzzzv", opts)
 
 -- replace all occurrences of the word under the cursor
 map("n", "<leader>ss", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
-
--- disable hlsearch automatically when your search is done. Enable it, when pressing one of the defined keys
-local ns = vim.api.nvim_create_namespace("toggle_hlsearch")
-
-local function toggle_hlsearch(char)
-  if vim.fn.mode() ~= "n" then
-    return
-  end
-
-  local keys = { "<CR>", "n", "N", "*", "#", "?", "/" }
-  local new_hlsearch = vim.tbl_contains(keys, vim.fn.keytrans(char))
-
-  if vim.opt.hlsearch:get() ~= new_hlsearch then
-    vim.opt.hlsearch = new_hlsearch
-  end
-end
-
-vim.on_key(toggle_hlsearch, ns)
