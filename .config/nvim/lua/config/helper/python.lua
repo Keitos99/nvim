@@ -7,7 +7,7 @@ function M.search_venv_python(workspace)
   end
 
   if not Helper.is_existing_dir(workspace) then
-    workspace = Helper.get_parent_dir(workspace)
+    workspace = vim.fs.dirname(workspace)
   end
 
   -- Use activated virtublenv.
@@ -17,13 +17,13 @@ function M.search_venv_python(workspace)
     return util_path.join(vim.env.VIRTUAL_ENV, "bin", "python")
   end
 
-  while workspace ~= nil and workspace ~= "" do
+  while workspace ~= nil and workspace ~= "" and workspace ~= "/" do
     local python = vim.fn.glob(workspace .. "/" .. "*/bin/python")
     if vim.fn.executable(python) == 1 then
       return python
     end
 
-    workspace = Helper.get_parent_dir(workspace)
+    workspace = vim.fs.dirname(workspace)
   end
 
   return ""
@@ -46,12 +46,12 @@ end
 function M.get_py_root(file_path)
   local is_dir = Helper.is_existing_dir(file_path)
   if not is_dir then
-    file_path = Helper.get_parent_dir(file_path)
+    file_path = vim.fs.dirname(file_path)
   end
 
   -- Use activated virtualenv.
   if vim.env.VIRTUAL_ENV then
-    return Helper.get_parent_dir(vim.env.VIRTUAL_ENV)
+    return vim.fs.dirname(vim.env.VIRTUAL_ENV)
   end
 
   -- search and use virtualenv

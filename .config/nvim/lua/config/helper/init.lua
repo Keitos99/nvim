@@ -12,16 +12,6 @@ function M.get_number_of_buffers()
   return number_of_listed_buffers
 end
 
--- NOTE:use vim.fs.dirname(path)
-function M.get_parent_dir(path)
-  path = path:match("^(.*)/")
-  if path == "" then
-    return ""
-  end
-
-  return path
-end
-
 function M.exists(path)
   local stat = vim.loop.fs_stat(path)
   return stat ~= nil
