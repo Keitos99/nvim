@@ -18,7 +18,7 @@ local opts = { noremap = true, silent = true, buffer = bufnr }
 local map = vim.keymap.set
 
 vim.cmd("set spell")
-map("n", "<leader>cn", "<cmd>PeekOpen<CR>", opts)
+map("n", "<leader>cn", "<cmd>ObsidianOpen<CR>", opts)
 conceal_strikethrough()
 -- Function to replace visual marked text
 
