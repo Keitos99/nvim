@@ -1,8 +1,4 @@
-local dap_ui_status_ok, dapui = pcall(require, "dapui")
-if not dap_ui_status_ok then
-  vim.notify("Could not load dapui")
-  return
-end
+local dapui = require("dapui")
 
 dapui.setup({
   element_mappings = {},

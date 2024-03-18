@@ -12,6 +12,7 @@ return {
     "mfussenegger/nvim-dap", -- debug adapter protocol client implementation for neovim
     dependencies = {
       "rcarriga/nvim-dap-ui", -- a UI for nvim-dap
+      "nvim-neotest/nvim-nio" -- dependency of nvim-dap-ui
     },
     config = function()
       local dap = require("dap")

@@ -1,6 +1,16 @@
 local M = {
   "andrewferrier/debugprint.nvim",
-  opts = {},
+  opts = {
+    print_tag = "AGY",
+    filetypes = {
+      ["4gl"] = {
+        left = 'call dbrte_log_message("',
+        right = '")',
+        mid_var = '" + (char)',
+        right_var = ")",
+      }
+    },
+  },
   keys = {
     "g?P",
     "g?p",
