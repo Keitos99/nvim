@@ -22,7 +22,6 @@ local opts = { noremap = true, silent = true }
 local map = vim.keymap.set
 
 map("", "<Space>", "<Nop>", opts)
-map("i", "jk", "<esc>", opts)
 
 -- moving between windows
 map("n", "<C-h>", "<C-w>h", opts)
