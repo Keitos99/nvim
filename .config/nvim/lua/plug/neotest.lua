@@ -1,6 +1,3 @@
-local helper = require("config.helper.python")
-local python_path = helper.get_python_path()
-
 local function create_user_cmds()
   vim.api.nvim_create_user_command("TestCurrent", function()
     require("neotest").run.run()
@@ -84,15 +81,17 @@ M.keys = {
 
 function M.config()
   local neotest = require("neotest")
+  local helper = require("config.helper.python")
 
   neotest.setup({
     adapters = {
       require("neotest-python")({
         dap = { justMyCode = false },
-        python = python_path,
+        python = helper.get_python_path,
       }),
     },
     quickfix = {
+      enabled = true,
       open = function()
         vim.cmd("Trouble quickfix")
       end,
