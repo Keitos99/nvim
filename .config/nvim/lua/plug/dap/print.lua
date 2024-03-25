@@ -1,5 +1,6 @@
 local M = {
   "andrewferrier/debugprint.nvim",
+  lazy = false,
   opts = {
     print_tag = "AGY",
     filetypes = {
@@ -8,16 +9,15 @@ local M = {
         right = '")',
         mid_var = '" + (char)',
         right_var = ")",
-      }
+      },
+      ["e4glide"] = {
+        left = 'call dbrte_log_message("',
+        right = '")',
+        mid_var = '" + (char)',
+        right_var = ")",
+      },
     },
   },
-  keys = {
-    "g?P",
-    "g?p",
-    "g?v",
-    "g?V",
-  },
-  cmd = "DeleteDebugPrints",
 }
 
 return M
