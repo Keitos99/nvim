@@ -178,13 +178,15 @@ return {
         },
         delay = 100, -- delay in milliseconds
         filetype_overrides = {
-          -- NOTE: disabling treesitter provider because on "big" files it seems to slow down the scrolling. Is this a bug?
+          -- HACK: disabling treesitter provider because on "big" files it seems to slow down the scrolling. Is this a bug?
           ["java"] = {
             providers = {
               "lsp",
               "regex",
             },
           },
+          -- HACK: ignore querys, because it slows down the navigation
+          ["query"] = { providers = { }, },
         },
         filetypes_denylist = {
           "dirvish",
