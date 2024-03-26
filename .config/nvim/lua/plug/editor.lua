@@ -20,21 +20,8 @@ return {
     -- Fuzzy finder
     "nvim-telescope/telescope.nvim",
     branch = "0.1.x", -- release branch, which can have breaking changes
-    dependencies = {
+    dependecies = {
       "nvim-lua/plenary.nvim",
-      { -- If encountering errors, see telescope-fzf-native README for install instructions
-        "nvim-telescope/telescope-fzf-native.nvim",
-
-        -- `build` is used to run some command when the plugin is installed/updated.
-        -- This is only run then, not every time Neovim starts up.
-        build = "make",
-
-        -- `cond` is a condition used to determine whether this plugin should be
-        -- installed and loaded.
-        cond = function()
-          return vim.fn.executable("make") == 1
-        end,
-      },
     },
     cmd = { "Telescope" },
     keys = {
@@ -201,7 +188,7 @@ return {
             },
           },
           -- HACK: ignore querys, because it slows down the navigation
-          ["query"] = { providers = { }, },
+          ["query"] = { providers = {} },
         },
         filetypes_denylist = {
           "dirvish",
@@ -249,6 +236,7 @@ return {
         TEST = { icon = icons_todo.TEST, color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
       },
       highlight = {
+        multiline = false,
         keyword = "bg",
         after = "fg",
         pattern = { [[.*<(KEYWORDS)\s*:]] },
