@@ -23,7 +23,7 @@ local map = vim.keymap.set
 
 map("", "<Space>", "<Nop>", opts)
 
--- moving between windows
+-- moving between windows NOTE: will be overwritten by vim-tmux-navigator
 map("n", "<C-h>", "<C-w>h", opts)
 map("n", "<C-j>", "<C-w>j", opts)
 map("n", "<C-k>", "<C-w>k", opts)
