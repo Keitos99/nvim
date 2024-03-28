@@ -62,7 +62,6 @@ return {
       end,
     },
     {
-      "n",
       "<leader>rbf",
       function()
         require("refactoring").refactor("Extract Block To File")
