@@ -3,7 +3,6 @@ local M = {
   event = "BufReadPost",
   dependencies = {
     "nvim-treesitter/nvim-treesitter-textobjects",
-    "windwp/nvim-ts-autotag",
   },
   build = ":TSUpdate",
 }
@@ -15,11 +14,6 @@ function M.config()
     enable = true, -- false will disable the whole extension
     disable = treesitter.disable_large, -- list of language that will be disabled
     additional_vim_regex_highlighting = false,
-  })
-
-  treesitter.add_plugin("autotag", {
-    enable = true,
-    filetypes = { "html", "xml" },
   })
 
   treesitter.add_plugin("textobjects", {
