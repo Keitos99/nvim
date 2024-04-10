@@ -20,7 +20,7 @@ return {
     -- Fuzzy finder
     "nvim-telescope/telescope.nvim",
     branch = "0.1.x", -- release branch, which can have breaking changes
-    dependecies = {
+    dependencies = {
       "nvim-lua/plenary.nvim",
     },
     cmd = { "Telescope" },
@@ -203,7 +203,7 @@ return {
   },
   {
     "folke/todo-comments.nvim",
-    dependecies = "nvim-lua/plenary.nvim",
+    dependencies = "nvim-lua/plenary.nvim",
     cmd = { "TodoTrouble", "TodoTelescope" },
     event = "VeryLazy",
     keys = {

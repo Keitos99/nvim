@@ -1,6 +1,6 @@
 local M = {
   "kyazdani42/nvim-tree.lua",
-  dependecies = { "nvim-tree/nvim-web-devicons" },
+  dependencies = { "nvim-tree/nvim-web-devicons" },
   keys = {
     { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "NvimTreeToggle" },
   },
@@ -87,7 +87,7 @@ local function open_qflist_on_delete(datas)
   }):sync()
 end
 
-M.autocmds = function()
+function autocmds()
   local rename = require("config.rename")
   local api = require("nvim-tree.api")
   local Event = api.events.Event
@@ -163,7 +163,7 @@ M.config = function()
       special_files = { "Cargo.toml", "Makefile", "README.md", "readme.md", "ReadMe.md" },
     },
   })
-  M.autocmds()
+  autocmds()
 end
 
 return M

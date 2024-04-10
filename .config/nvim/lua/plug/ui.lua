@@ -180,9 +180,11 @@ return {
     },
   },
   {
+    -- the tohtml does not work if this plugin was used
     "lukas-reineke/indent-blankline.nvim",
     event = "BufReadPre",
     main = "ibl",
+    enabled = false,
     opts = {
       indent = {
         highlight = {

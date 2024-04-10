@@ -4,7 +4,7 @@ return {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
   },
-  opt = true,
+  opts = true,
   cmd = { "Refactor" },
   keys = {
     {

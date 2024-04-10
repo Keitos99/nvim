@@ -31,16 +31,16 @@ return {
       })
     end,
   },
-  {
-    dir = vim.fn.expand("~") .. "/Documents/Workspace/Github/tohtml.nvim",
-    cmd = "TSToHTML",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    opts = {
-      filetype_to_parser_language = {
-        ["4gl"] = "e4glide",
-      },
-    },
-  },
+  -- {
+  --   dir = vim.fn.expand("~") .. "/Documents/Workspace/Github/tohtml.nvim",
+  --   cmd = "TSToHTML",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --   },
+  --   opts = {
+  --     filetype_to_parser_language = {
+  --       ["4gl"] = "e4glide",
+  --     },
+  --   },
+  -- },
 }
