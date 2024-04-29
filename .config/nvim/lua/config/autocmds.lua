@@ -7,7 +7,17 @@ autocmd("FileType", { pattern = "markdown", command = "set awa" })
 autocmd("FocusGained", { command = "checktime" })
 
 -- Highlight on yank
-autocmd("TextYankPost", { callback = vim.highlight.on_yank })
+autocmd("TextYankPost", {
+  desc = "highlight text on yank",
+  pattern = "*",
+  callback = function()
+    vim.highlight.on_yank({
+      higroup = "Search",
+      timeout = 150,
+      on_visual = true,
+    })
+  end,
+})
 
 -- show the cursor line only in the active window
 autocmd({ "InsertLeave", "WinEnter" }, {
