@@ -20,7 +20,7 @@ vim.api.nvim_create_autocmd("User", {
       local keys = { "<CR>", "n", "N", "*", "#", "?", "/" }
       local new_hlsearch = vim.tbl_contains(keys, vim.fn.keytrans(char))
 
-      if vim.opt.hlsearch:get() ~= new_hlsearch then
+      if vim.opt.hlsearch ~= new_hlsearch then
         vim.opt.hlsearch = new_hlsearch
       end
     end

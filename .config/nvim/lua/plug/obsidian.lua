@@ -53,5 +53,12 @@ return {
     attachments = {
       img_folder = "media",
     },
+    note_id_func = function(title)
+      if title ~= nil then
+        -- If title is given, transform it into valid file name.
+        title = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", "")
+      end
+      return title
+    end,
   },
 }

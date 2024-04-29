@@ -88,7 +88,7 @@ local function open_qflist_on_delete(datas)
 end
 
 function autocmds()
-  local rename = require("config.rename")
+  local rename = require("config.helper.rename")
   local api = require("nvim-tree.api")
   local Event = api.events.Event
 

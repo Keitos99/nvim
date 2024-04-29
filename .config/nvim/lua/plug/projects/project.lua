@@ -38,7 +38,7 @@ local M = {
 
       ---@type string
       ---@usage path to store the project history for use in telescope
-      datapath = vim.fn.stdpath("data"),
+      datapath = vim.fn.stdpath("data") .. "/project/",
     })
   end,
 }
