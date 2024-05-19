@@ -2,7 +2,7 @@ local M = {
   "andrewferrier/debugprint.nvim",
   lazy = false,
   opts = {
-    print_tag = "AGY",
+    print_tag = "AGYP",
     filetypes = {
       ["4gl"] = {
         left = 'call dbrte_log_message("',

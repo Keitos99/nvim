@@ -129,6 +129,7 @@ function M.config(_, opts)
       { name = "path" },
     },
   })
+
 end
 
 return M
