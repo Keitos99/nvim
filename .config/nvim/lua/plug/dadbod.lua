@@ -8,7 +8,6 @@ return {
       ft = { "sql", "mysql", "plsql" },
       lazy = true,
       config = function()
-        print("AGYP[2]: dadbod.lua:10 (after config = function())")
         -- Setup up vim-dadbod
         require("cmp").setup.filetype({ "sql", "mysql" }, {
           sources = {
