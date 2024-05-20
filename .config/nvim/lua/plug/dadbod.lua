@@ -9,9 +9,10 @@ return {
       lazy = true,
       config = function()
         -- Setup up vim-dadbod
-        require("cmp").setup.filetype({ "sql", "mysql" }, {
+        require("cmp").setup.filetype({ "sql", "mysql", "plsql" }, {
           sources = {
             { name = "vim-dadbod-completion" },
+            -- { name = "luasnip" },
             { name = "buffer" },
           },
         })
