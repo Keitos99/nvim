@@ -7,6 +7,16 @@ return {
       "nvim-treesitter/nvim-treesitter",
     },
     ft = "4gl",
+    config = function()
+      require("cmp").setup.filetype({ "4gl" }, {
+        sources = {
+          { name = "e4gl" },
+          { name = "luasnip" },
+          { name = "buffer" },
+          { name = "path" },
+        },
+      })
+    end,
   },
   {
     dir = vim.fn.expand("~") .. "/Documents/Workspace/Github/cvs.nvim",
@@ -31,16 +41,4 @@ return {
       })
     end,
   },
-  -- {
-  --   dir = vim.fn.expand("~") .. "/Documents/Workspace/Github/tohtml.nvim",
-  --   cmd = "TSToHTML",
-  --   dependencies = {
-  --     "nvim-lua/plenary.nvim",
-  --   },
-  --   opts = {
-  --     filetype_to_parser_language = {
-  --       ["4gl"] = "e4glide",
-  --     },
-  --   },
-  -- },
 }
