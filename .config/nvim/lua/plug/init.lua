@@ -8,6 +8,7 @@ return {
     },
     ft = "4gl",
     config = function()
+      require("e4glide").setup()
       require("cmp").setup.filetype({ "4gl" }, {
         sources = {
           { name = "e4gl" },
