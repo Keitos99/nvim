@@ -9,8 +9,6 @@ return {
     return true
   end,
   on_attach = function(client, bufnr)
-    require("plug.lsp.handlers").on_attach(client, bufnr)
-
     local opts = { noremap = true, silent = true, buffer = bufnr }
     vim.keymap.set("n", "<A-o>", "<Cmd>PyrightOrganizeImports<CR>", opts)
   end,

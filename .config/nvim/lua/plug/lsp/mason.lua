@@ -47,7 +47,6 @@ M.setup_lsps = function(mason_lspconfig)
 
   -- Automatically setup lsp-servers installed with mason
   local default = vim.tbl_extend("force", lspconfig.util.default_config, {
-    on_attach = lsp.on_attach,
     capabilities = lsp.capabilities,
   })
 

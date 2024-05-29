@@ -113,7 +113,7 @@ return {
   },
   capabilities = capabilities,
   on_attach = function(client, bufnr)
-    lsp.on_attach(client, bufnr)
+    -- lsp.on_attach(client, bufnr)
 
     jdtls.setup_dap({
       hotcodereplace = "auto",

@@ -65,7 +65,6 @@ return {
   on_attach = function(client, bufnr)
     local sqls = require("sqls")
     sqls.on_attach(client, bufnr)
-    handlers.on_attach(client, bufnr)
 
     local opts = { noremap = true, silent = true, buffer = bufnr }
     local map = vim.keymap.set

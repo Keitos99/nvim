@@ -3,9 +3,9 @@ local M = {}
 local icons = require("config.ui.icons")
 local signs = {
   { name = "DiagnosticSignError", text = icons.diagnostics.Error },
-  { name = "DiagnosticSignWarn",  text = icons.diagnostics.Warning },
-  { name = "DiagnosticSignHint",  text = icons.diagnostics.Hint },
-  { name = "DiagnosticSignInfo",  text = icons.diagnostics.Information },
+  { name = "DiagnosticSignWarn", text = icons.diagnostics.Warning },
+  { name = "DiagnosticSignHint", text = icons.diagnostics.Hint },
+  { name = "DiagnosticSignInfo", text = icons.diagnostics.Information },
 }
 
 -- Plugins
@@ -24,7 +24,7 @@ local function add_signature(bufnr)
 end
 
 M.DEFAULT_CONFIG = {
-  virtual_text = false,  -- easily becomes annoying
+  virtual_text = false, -- easily becomes annoying
   virtual_lines = false, -- config for lsp_lines
   signs = {
     active = signs,
@@ -46,8 +46,7 @@ M.capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.m
 
 function M.setup()
   for _, sign in ipairs(signs) do
-    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-  end
+    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" }) end
 
   vim.diagnostic.config(M.DEFAULT_CONFIG)
 
@@ -59,6 +58,18 @@ function M.setup()
       return true
     end
   end
+
+  -- LspAttach autocommand
+  local autocmd = vim.api.nvim_create_autocmd
+  autocmd("LspAttach", {
+    callback = function(args)
+      local bufnr = args.buf
+      local client = vim.lsp.get_client_by_id(args.data.client_id)
+
+      local lsp = require("plug.lsp.handlers")
+      lsp.on_attach(client, bufnr)
+    end,
+  })
 end
 
 function M.on_attach(client, bufnr)
