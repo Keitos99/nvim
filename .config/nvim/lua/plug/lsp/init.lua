@@ -30,33 +30,25 @@ local M = {
   {
     "mfussenegger/nvim-jdtls",
     ft = "java",
-    module = true,
-    config = function()
-      local jdtls = require("jdtls")
-      local config = require("plug.lsp.settings.jdtls")
-      jdtls.start_or_attach(config)
-    end,
   },
   {
     "simaxme/java.nvim",
     ft = "java",
-    config = function()
-      require("java").setup({
-        root_markers = { -- markers for detecting the package path (the package path should start *after* the marker)
-          "main/java/",
-          "test/java/",
-          "src",
-        },
-        rename = {
-          enable = true, -- enable the functionality for renaming java files
-          nvimtree = true, -- enable nvimtree integration
-          write_and_close = false, -- automatically write and close modified (previously unopened) files after refactoring a java file
-        },
-        snippets = {
-          enable = true, -- enable the functionality for java snippets
-        },
-      })
-    end,
+    opts = {
+      root_markers = { -- markers for detecting the package path (the package path should start *after* the marker)
+        "main/java/",
+        "test/java/",
+        "src",
+      },
+      rename = {
+        enable = true, -- enable the functionality for renaming java files
+        nvimtree = true, -- enable nvimtree integration
+        write_and_close = false, -- automatically write and close modified (previously unopened) files after refactoring a java file
+      },
+      snippets = {
+        enable = true, -- enable the functionality for java snippets
+      },
+    },
   },
 }
 

@@ -53,7 +53,7 @@ M.setup_lsps = function(mason_lspconfig)
   lspconfig.util.default_config = default
   for _, server_name in ipairs(mason_lspconfig.get_installed_servers()) do
     local opts = {}
-    local has_settings, server_opts = pcall(require, "plug.lsp.settings." .. server_name)
+    local has_settings, server_opts = pcall(require, "config.lsp.settings." .. server_name)
 
     if has_settings then
       -- extend with lsp specified configuration
