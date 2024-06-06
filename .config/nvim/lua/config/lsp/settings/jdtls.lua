@@ -78,7 +78,6 @@ local function read_libs(project_root)
   local extract_classpathentries_cmd = "grep 'classpathentry kind=\"lib\"' "
     .. project_root
     .. "/.classpath | sed 's/.*classpathentry kind=\"lib\" path=\"//' | sed 's/\".*//'"
-    print(extract_classpathentries_cmd)
   local jars = require("config.helper").cmd_to_table(extract_classpathentries_cmd)
 
   local new_table = {}
