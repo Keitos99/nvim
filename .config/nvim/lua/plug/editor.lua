@@ -12,9 +12,7 @@ return {
 
     -- `cond` is a condition used to determine whether this plugin should be
     -- installed and loaded.
-    cond = function()
-      return vim.fn.executable("make") == 1
-    end,
+    cond = function() return vim.fn.executable("make") == 1 end,
   },
   {
     -- Fuzzy finder
@@ -54,9 +52,7 @@ return {
     },
     config = function()
       local status_ok, telescope = pcall(require, "telescope")
-      if not status_ok then
-        return
-      end
+      if not status_ok then return end
 
       local actions = require("telescope.actions")
 
@@ -209,16 +205,12 @@ return {
     keys = {
       {
         "]t",
-        function()
-          require("todo-comments").jump_next()
-        end,
+        function() require("todo-comments").jump_next() end,
         desc = "Jump to the next todo comment",
       },
       {
         "[t",
-        function()
-          require("todo-comments").jump_prev()
-        end,
+        function() require("todo-comments").jump_prev() end,
         desc = "Jump to the previous todo comment",
       },
     },
@@ -248,16 +240,12 @@ return {
     keys = {
       {
         "<C-a>",
-        function()
-          return require("dial.map").inc_normal()
-        end,
+        function() return require("dial.map").inc_normal() end,
         expr = true,
       },
       {
         "<C-x>",
-        function()
-          return require("dial.map").dec_normal()
-        end,
+        function() return require("dial.map").dec_normal() end,
         expr = true,
       },
     },
@@ -288,6 +276,9 @@ return {
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-tree/nvim-web-devicons",
+    },
+    {
+      "delphinus/auto-cursorline.nvim",
     },
   },
 }
