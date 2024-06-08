@@ -18,11 +18,15 @@ local function add_signature(bufnr)
     },
   }, bufnr)
 
-  vim.keymap.set({ "n" }, "<leader>k", function()
-    signature.toggle_float_win()
-  end, { silent = true, noremap = true, desc = "toggle signature" })
+  vim.keymap.set(
+    { "n" },
+    "<leader>k",
+    function() signature.toggle_float_win() end,
+    { silent = true, noremap = true, desc = "toggle signature" }
+  )
 end
 
+M.capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 M.DEFAULT_CONFIG = {
   virtual_text = false, -- easily becomes annoying
   virtual_lines = false, -- config for lsp_lines
@@ -42,11 +46,10 @@ M.DEFAULT_CONFIG = {
   },
 }
 
-M.capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
-
 function M.setup()
   for _, sign in ipairs(signs) do
-    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" }) end
+    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+  end
 
   vim.diagnostic.config(M.DEFAULT_CONFIG)
 
@@ -85,9 +88,7 @@ end
 
 function M.highlight_document(client)
   -- Set autocommands conditional on server_capabilities
-  if not client.server_capabilities.document_highlight then
-    return
-  end
+  if not client.server_capabilities.document_highlight then return end
 
   vim.cmd([[
     augroup lsp_document_highlight
@@ -98,15 +99,11 @@ function M.highlight_document(client)
   ]])
 end
 
-function M.load_plugins(client, bufnr)
-  add_signature()
-end
+function M.load_plugins(client, bufnr) add_signature() end
 
 function M.set_keymaps(bufnr)
   local fmt = function(cmd)
-    return function(str)
-      return cmd:format(str)
-    end
+    return function(str) return cmd:format(str) end
   end
 
   local lsp = fmt("<cmd>lua vim.lsp.%s<cr>")

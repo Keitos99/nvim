@@ -17,9 +17,7 @@ local M = {
       vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, lsp_config)
 
       local has_telescope, telescope = pcall(require, "telescope.builtin")
-      if has_telescope then
-        lsp.extend_with_telescope(telescope)
-      end
+      if has_telescope then lsp.extend_with_telescope(telescope) end
     end,
   },
   require("plug.lsp.none-ls"), -- formatter and linter
