@@ -17,9 +17,9 @@ M.config = function()
     ui = { border = "rounded" },
   })
 
-  local lsp_config = require("config.lsp")
-  lsp_config.install_tools(mason_lspconfig)
-  lsp_config.setup_lsp(mason_lspconfig)
+  local mason_handler = require("config.lsp.mason")
+  mason_handler.install_tools(mason_lspconfig)
+  mason_handler.setup_lsp(mason_lspconfig)
 end
 
 return M
