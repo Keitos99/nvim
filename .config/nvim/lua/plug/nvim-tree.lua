@@ -14,30 +14,20 @@ local function open_qflist_on_delete(datas)
   local helper = require("config.helper")
   local filename = ""
 
-  if datas["fname"] ~= nil then
-    filename = datas.fname
-  end
+  if datas["fname"] ~= nil then filename = datas.fname end
 
-  if datas["old_name"] ~= nil then
-    filename = datas.old_name
-  end
+  if datas["old_name"] ~= nil then filename = datas.old_name end
 
-  if datas["folder_name"] ~= nil then
-    filename = datas.folder_name
-  end
+  if datas["folder_name"] ~= nil then filename = datas.folder_name end
 
-  if filename == "" then
-    return
-  end
+  if filename == "" then return end
 
   local command = "rg"
   local module_name = helper.get_module(filename)
   local fname_parent = vim.fs.dirname(filename)
   local root_dir = helper.find_root(fname_parent)
 
-  if module_name == "" then
-    return
-  end
+  if module_name == "" then return end
 
   local search_regex = '"' .. module_name .. '.*"'
   print(search_regex)
@@ -63,9 +53,7 @@ local function open_qflist_on_delete(datas)
         print(command .. " failed with code " .. code .. "\n" .. error)
       end
 
-      if code == 1 then
-        print("No usage of the module " .. module_name)
-      end
+      if code == 1 then print("No usage of the module " .. module_name) end
 
       local results = {}
       local lines = j:result()
@@ -99,9 +87,7 @@ function autocmds()
   -- https://github.com/antosha417/nvim-lsp-file-operations plugin seems promising
   -- it uses the WillRename-Lsp-Request
   -- util then use the following
-  api.events.subscribe(Event.NodeRenamed, function(data)
-    rename.on_node_renamed(data.old_name, data.new_name)
-  end)
+  api.events.subscribe(Event.NodeRenamed, function(data) rename.on_node_renamed(data.old_name, data.new_name) end)
 end
 
 M.config = function()
@@ -162,6 +148,8 @@ M.config = function()
       },
       special_files = { "Cargo.toml", "Makefile", "README.md", "readme.md", "ReadMe.md" },
     },
+
+    filters = { custom = { "CVS" } },
   })
   autocmds()
 end
