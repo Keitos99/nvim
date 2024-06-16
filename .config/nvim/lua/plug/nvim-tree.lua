@@ -15,11 +15,8 @@ local function open_qflist_on_delete(datas)
   local filename = ""
 
   if datas["fname"] ~= nil then filename = datas.fname end
-
   if datas["old_name"] ~= nil then filename = datas.old_name end
-
   if datas["folder_name"] ~= nil then filename = datas.folder_name end
-
   if filename == "" then return end
 
   local command = "rg"
