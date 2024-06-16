@@ -109,34 +109,9 @@ function M.get_module(fname)
     fname = fname:gsub(".lua$", "")
     fname = fname:gsub(".init$", "")
     local module = fname:gsub("/", ".")
-    print("Deleted Module " .. module)
     return module
   end
   return ""
-end
-
-function M.get_line_byte_length(line_number)
-  local line = vim.api.nvim_buf_get_lines(0, line_number - 1, line_number, false)[1]
-  return #line
-end
-
-function M.region_to_text(region)
-  local text = ""
-  local maxcol = vim.v.maxcol + 1
-  for line, cols in vim.spairs(region) do
-    line = line - 1
-    local endcol = cols[2] == maxcol and -1 or cols[2]
-    local chunk = vim.api.nvim_buf_get_text(0, line, cols[1], line, endcol, {})[1]
-    text = ("%s%s\n"):format(text, chunk)
-  end
-  return text
-end
-
-function M.get_visual_selection()
-  local beginning = vim.api.nvim_buf_get_mark(0, "<")
-  local ending = vim.api.nvim_buf_get_mark(0, ">")
-  local region = vim.region(0, beginning, ending, "v", true)
-  return M.region_to_text(region)
 end
 
 function M.has(plugin)
