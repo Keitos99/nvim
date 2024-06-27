@@ -22,10 +22,6 @@ return {
     sign_priority = 6,
     update_debounce = 100,
     max_file_length = 40000, -- Disable if file is longer than this (in lines)
-    -- yet another dotfile manager
-    yadm = {
-      enable = false,
-    },
 
     on_attach = function(bufnr)
       local gs = package.loaded.gitsigns
