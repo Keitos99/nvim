@@ -2,7 +2,7 @@ return {
   { "mfussenegger/nvim-dap-python", ft = "python", module = false },
   -- plugins that i wrote
   {
-    dir = vim.fn.expand("~") .. "/Documents/Workspace/Github/tree-sitter-e4glide",
+    dir = vim.fn.expand("~") .. "/dev/personal/tree-sitter-e4glide",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
     },
@@ -20,7 +20,7 @@ return {
     end,
   },
   {
-    dir = vim.fn.expand("~") .. "/Documents/Workspace/Github/cvs.nvim",
+    dir = vim.fn.expand("~") .. "/dev/personal/cvs.nvim",
     cmd = {
       "CVSCompare",
       "CVSReplace",

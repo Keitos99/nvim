@@ -3,6 +3,7 @@ require("config.options")
 require("config.keymaps")
 require("config.lazy") -- load my plugins
 require("config.autocmds")
+require("config.redir")
 
 vim.api.nvim_create_autocmd("User", {
   pattern = "VeryLazy",
@@ -12,7 +13,6 @@ vim.api.nvim_create_autocmd("User", {
 
     local function toggle_hlsearch(char)
       if vim.fn.mode() ~= "n" then return end
-
       local keys = { "<CR>", "n", "N", "*", "#", "?", "/" }
       local new_hlsearch = vim.tbl_contains(keys, vim.fn.keytrans(char))
 
