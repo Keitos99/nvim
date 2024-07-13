@@ -3,7 +3,7 @@ local M = {
     "neovim/nvim-lspconfig",
     event = { "BufReadPost", "BufNewFile" },
     dependencies = {
-      "nvim-lua/plenary.nvim", -- useful functions
+      "nvim-lua/plenary.nvim",    -- useful functions
       "ray-x/lsp_signature.nvim", -- show function signature when you type
       { "folke/neodev.nvim", opts = true },
     },
@@ -20,7 +20,7 @@ local M = {
       if has_telescope then lsp.extend_with_telescope(telescope) end
     end,
   },
-  require("plug.lsp.none-ls"), -- formatter and linter
+  require("plug.conform"), -- formatter and linter
   require("plug.lsp.mason"),
   require("plug.lsp.trouble"),
   require("plug.lsp.lines"),
@@ -39,8 +39,8 @@ local M = {
         "src",
       },
       rename = {
-        enable = true, -- enable the functionality for renaming java files
-        nvimtree = true, -- enable nvimtree integration
+        enable = true,           -- enable the functionality for renaming java files
+        nvimtree = true,         -- enable nvimtree integration
         write_and_close = false, -- automatically write and close modified (previously unopened) files after refactoring a java file
       },
       snippets = {

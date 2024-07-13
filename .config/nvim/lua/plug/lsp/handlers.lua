@@ -119,7 +119,12 @@ function M.set_keymaps(bufnr)
   map("n", "gr", lsp("buf.references()"), opts)
   map("n", "<leader>rn", lsp("buf.rename()"), opts)
   map("n", "<leader>ca", lsp("buf.code_action()"), opts)
-  map("n", "<leader>F", lsp("buf.format({async = true})"), opts)
+  map(
+    "n",
+    "<leader>F",
+    function() require("conform").format({ bufnr = bufnr, lsp_format = "fallback", timeout_ms = 500 }) end,
+    opts
+  )
 
   map("n", "gl", diagnostic("open_float()"), opts)
   map("n", "[d", diagnostic("goto_prev({ border = 'rounded' })") .. "zz", opts)
