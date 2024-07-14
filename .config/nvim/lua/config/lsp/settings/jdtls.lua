@@ -38,9 +38,7 @@ local WORKSPACE_DIR = WORKSPACE_PATH .. PROJECT_NAME
 local function get_bundles(jar_patterns)
   local plugin_path =
     "/dev/microsoft/vscode-java-test/java-extension/com.microsoft.java.test.plugin.site/target/repository/plugins/"
-  local bundle_list = vim.tbl_map(function(x)
-    return require("jdtls.path").join(plugin_path, x)
-  end, {
+  local bundle_list = vim.tbl_map(function(x) return require("jdtls.path").join(plugin_path, x) end, {
     "junit-jupiter-*.jar",
     "junit-platform-*.jar",
     "junit-vintage-engine_*.jar",
@@ -91,11 +89,12 @@ local function read_libs(project_root)
   end
 
   if number_of_non_existent_jars > 0 then
-    vim.notify(string.format("There are %s entries in the .classpath file, that do not exist!", number_of_non_existent_jars))
+    vim.notify(
+      string.format("There are %s entries in the .classpath file, that do not exist!", number_of_non_existent_jars)
+    )
   end
   return new_table
 end
-
 
 return {
   cmd = {

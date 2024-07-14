@@ -1,8 +1,8 @@
 -- NOTE:
 -- Thanks @ramainl for inspiration
--- credit: 
---          - https://gist.github.com/romainl/eae0a260ab9c135390c30cd370c20cd7
---          - https://gist.github.com/Leenuus/7a2ea47b88bfe16430b42e4e48122718
+-- credits:
+-- https://gist.github.com/romainl/eae0a260ab9c135390c30cd370c20cd7
+-- https://gist.github.com/Leenuus/7a2ea47b88bfe16430b42e4e48122718
 
 vim.g.DEBUG = false
 local log = require("plenary.log").new({
@@ -17,9 +17,7 @@ local function redir_open_win(buf, vertical, stderr_p)
     })
     vim.api.nvim_create_autocmd("WinClosed", {
       pattern = { string.format("%d", win) },
-      callback = function()
-        vim.g[wn] = nil
-      end,
+      callback = function() vim.g[wn] = nil end,
     })
     vim.g[wn] = win
   else
@@ -46,9 +44,7 @@ local function redir_shell_command(cmd, lines, vertical, stderr_p)
   }
 
   local stdin = nil
-  if #lines ~= 0 then
-    stdin = lines
-  end
+  if #lines ~= 0 then stdin = lines end
 
   local stdout_buf = vim.api.nvim_create_buf(false, true)
   vim.api.nvim_set_option_value("ft", "redir_stdout", { buf = stdout_buf })
@@ -63,9 +59,7 @@ local function redir_shell_command(cmd, lines, vertical, stderr_p)
       vim.schedule_wrap(function()
         if data ~= nil then
           local output = vim.fn.split(data, "\n")
-          if vim.g.DEBUG then
-            log.info("stdout: " .. vim.inspect(output))
-          end
+          if vim.g.DEBUG then log.info("stdout: " .. vim.inspect(output)) end
           vim.api.nvim_buf_set_lines(stderr_buf, -2, -1, false, output)
         end
       end)()
@@ -95,9 +89,7 @@ shell_cmd: %s
       vim.schedule_wrap(function()
         if stdout ~= nil then
           local output = vim.fn.split(stdout, "\n")
-          if vim.g.DEBUG then
-            log.info("stdout: " .. vim.inspect(output))
-          end
+          if vim.g.DEBUG then log.info("stdout: " .. vim.inspect(output)) end
           vim.api.nvim_buf_set_lines(stdout_buf, -2, -1, false, output)
         end
       end)()
@@ -115,9 +107,7 @@ local function redir(args)
   local vertical = args.smods.vertical
   local stderr_p = args.bang
 
-  if vim.g.DEBUG then
-    log.info(vim.inspect(args))
-  end
+  if vim.g.DEBUG then log.info(vim.inspect(args)) end
 
   if cmd:sub(1, 1) == "!" then
     local range = args.range
@@ -146,9 +136,7 @@ vim.api.nvim_create_user_command("Redir", redir, {
 })
 vim.cmd([[cabbrev R Redir]])
 
-vim.api.nvim_create_user_command("Mes", function()
-  vim.cmd("Redir messages")
-end, { bar = true })
+vim.api.nvim_create_user_command("Mes", function() vim.cmd("Redir messages") end, { bar = true })
 vim.cmd([[cabbrev M Mes]])
 
 local function evaler(range)
@@ -180,4 +168,3 @@ vim.api.nvim_create_user_command("EvalRange", function(args)
   local bang = args.bang
   evaler("'<,'>")(bang)
 end, { bar = true, bang = true, range = true })
-
