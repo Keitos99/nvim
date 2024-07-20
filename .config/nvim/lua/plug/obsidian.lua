@@ -36,6 +36,12 @@ return {
       template = nil,
     },
 
+    templates = {
+      folder = "~/Documents/Notes/templates/",
+      date_format = "%Y-%m-%d-%a",
+      time_format = "%H:%M",
+    },
+
     ui = {
       checkboxes = {
         -- NOTE: the 'char' value has to be a single character, and the highlight groups are defined below.
