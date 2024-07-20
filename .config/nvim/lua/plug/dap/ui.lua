@@ -32,12 +32,8 @@ dapui.setup({
   -- Expand lines larger than the window
   -- Requires >= 0.7
   expand_lines = false, -- NOTE: when true and the line is to long, then it becomes unreadable
-  -- Layouts define sections of the screen to place windows.
-  -- The position can be "left", "right", "top" or "bottom".
-  -- The size specifies the height/width depending on position.
-  -- Elements are the elements shown in the layout (in order).
-  -- Layouts are opened in order so that earlier layouts take priority in window sizing.
   layouts = {
+    -- Layout 1
     {
       elements = {
         {
@@ -52,6 +48,7 @@ dapui.setup({
       position = "bottom",
       size = 10,
     },
+    -- Layout 2
     {
       elements = {
         "scopes",
@@ -61,12 +58,24 @@ dapui.setup({
       size = 0.25,
       position = "right",
     },
+
+    -- Layout 3
     {
       elements = {
         "stacks",
       },
       size = 10,
       position = "bottom",
+    },
+
+    -- Layout 4
+    {
+      elements = {
+        "scopes",
+        "watches",
+      },
+      size = 0.25,
+      position = "right",
     },
   },
   floating = {
