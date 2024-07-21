@@ -1,14 +1,76 @@
+local icons = require("config.ui.icons")
+local doc_icons = icons.documents
+local git_icons = icons.nvim_tree.git
+
 local M = {
   "kyazdani42/nvim-tree.lua",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   keys = {
     { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "NvimTreeToggle" },
   },
-}
 
-local icons = require("config.ui.icons")
-local doc_icons = icons.documents
-local git_icons = icons.nvim_tree.git
+  opts = {
+    disable_netrw = true,
+    hijack_netrw = true,
+    open_on_tab = false,
+    hijack_cursor = false,
+    update_cwd = true,
+
+    sync_root_with_cwd = true,
+    respect_buf_cwd = true,
+    update_focused_file = {
+      enable = true,
+      update_root = true,
+      update_cwd = true,
+      ignore_list = {},
+    },
+    git = {
+      enable = true,
+      ignore = true,
+      timeout = 500,
+    },
+
+    diagnostics = {
+      enable = true,
+      icons = {
+        hint = icons.diagnostics.Hint,
+        info = icons.diagnostics.Information,
+        warning = icons.diagnostics.Warning,
+        error = icons.diagnostics.Error,
+      },
+    },
+    renderer = {
+      icons = {
+        webdev_colors = true,
+        git_placement = "before",
+        padding = " ",
+        symlink_arrow = " ➛ ",
+        show = {
+          file = true,
+          folder = true,
+          folder_arrow = true,
+          git = true,
+        },
+        glyphs = {
+          default = doc_icons.File.Default,
+          symlink = doc_icons.File.Symlink,
+          folder = {
+            default = doc_icons.Folder.Default,
+            open = doc_icons.Folder.Open,
+            empty = doc_icons.Folder.Empty,
+            empty_open = doc_icons.Folder.EmptyOpen,
+            symlink = doc_icons.Folder.Symlink,
+          },
+          git = git_icons,
+        },
+      },
+      special_files = { "Cargo.toml", "Makefile", "README.md", "readme.md", "ReadMe.md" },
+    },
+
+    -- TODO: if the directory is named "cvs" (lowercase) then nvim-tree will filter it out
+    filters = { custom = { "CVS" } },
+  },
+}
 
 local function open_qflist_on_delete(datas)
   local helper = require("config.helper")
@@ -72,7 +134,7 @@ local function open_qflist_on_delete(datas)
   }):sync()
 end
 
-function autocmds()
+local function autocmds()
   local rename = require("config.helper.rename")
   local api = require("nvim-tree.api")
   local Event = api.events.Event
@@ -87,67 +149,8 @@ function autocmds()
   api.events.subscribe(Event.NodeRenamed, function(data) rename.on_node_renamed(data.old_name, data.new_name) end)
 end
 
-M.config = function()
-  require("nvim-tree").setup({
-    disable_netrw = true,
-    hijack_netrw = true,
-    open_on_tab = false,
-    hijack_cursor = false,
-    update_cwd = true,
-
-    sync_root_with_cwd = true,
-    respect_buf_cwd = true,
-    update_focused_file = {
-      enable = true,
-      update_root = true,
-      update_cwd = true,
-      ignore_list = {},
-    },
-    git = {
-      enable = true,
-      ignore = true,
-      timeout = 500,
-    },
-
-    diagnostics = {
-      enable = true,
-      icons = {
-        hint = icons.diagnostics.Hint,
-        info = icons.diagnostics.Information,
-        warning = icons.diagnostics.Warning,
-        error = icons.diagnostics.Error,
-      },
-    },
-    renderer = {
-      icons = {
-        webdev_colors = true,
-        git_placement = "before",
-        padding = " ",
-        symlink_arrow = " ➛ ",
-        show = {
-          file = true,
-          folder = true,
-          folder_arrow = true,
-          git = true,
-        },
-        glyphs = {
-          default = doc_icons.File.Default,
-          symlink = doc_icons.File.Symlink,
-          folder = {
-            default = doc_icons.Folder.Default,
-            open = doc_icons.Folder.Open,
-            empty = doc_icons.Folder.Empty,
-            empty_open = doc_icons.Folder.EmptyOpen,
-            symlink = doc_icons.Folder.Symlink,
-          },
-          git = git_icons,
-        },
-      },
-      special_files = { "Cargo.toml", "Makefile", "README.md", "readme.md", "ReadMe.md" },
-    },
-
-    filters = { custom = { "CVS" } },
-  })
+M.config = function(_, opts)
+  require("nvim-tree").setup(opts)
   autocmds()
 end
 
