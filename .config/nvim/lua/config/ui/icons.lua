@@ -82,9 +82,9 @@ return {
   todo = {
     FIX = "!",
     TODO = "",
-    WARN = "",
-    NOTE = "",
-    HACK = "",
+    WARN = " ",
+    NOTE = " ",
+    HACK = " ",
     PERF = "",
     TEST = "",
   },
