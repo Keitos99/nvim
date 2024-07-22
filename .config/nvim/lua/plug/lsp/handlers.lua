@@ -112,23 +112,26 @@ function M.set_keymaps(bufnr)
   local opts = { noremap = true, silent = true, buffer = bufnr }
   local map = vim.keymap.set
 
+  -- :h lsp-defaults
+  -- gr: references
+  -- K: hover
+
   map("n", "gD", lsp("buf.declaration()"), opts)
   map("n", "gd", lsp("buf.definition()"), opts)
-  map("n", "K", lsp("buf.hover()"), opts)
   map("n", "gi", lsp("buf.implementation()<CR>"), opts)
-  map("n", "gr", lsp("buf.references()"), opts)
   map("n", "<leader>rn", lsp("buf.rename()"), opts)
   map("n", "<leader>ca", lsp("buf.code_action()"), opts)
+
+  map("n", "gl", diagnostic("open_float()"), opts)
+  map("n", "[d", diagnostic("goto_prev({ border = 'rounded' })") .. "zz", opts)
+  map("n", "]d", diagnostic("goto_next({ border = 'rounded' })") .. "zz", opts)
+
   map(
     "n",
     "<leader>F",
     function() require("conform").format({ bufnr = bufnr, lsp_format = "fallback", timeout_ms = 500 }) end,
     opts
   )
-
-  map("n", "gl", diagnostic("open_float()"), opts)
-  map("n", "[d", diagnostic("goto_prev({ border = 'rounded' })") .. "zz", opts)
-  map("n", "]d", diagnostic("goto_next({ border = 'rounded' })") .. "zz", opts)
 end
 
 return M
