@@ -150,13 +150,6 @@ return {
         lualine_a = { "mode" },
         lualine_b = { "branch", "diff", "diagnostics" },
         lualine_x = { "encoding", "fileformat", "filetype" },
-        lualine_y = {
-          {
-            require("lazy.status").updates,
-            cond = require("lazy.status").has_updates,
-            color = { fg = "#ff9e64" },
-          },
-        },
         lualine_z = { "location" },
       },
       inactive_sections = {
@@ -172,7 +165,7 @@ return {
     },
   },
   {
-    -- the tohtml does not work if this plugin was used
+    -- NOTE: the tohtml command does not work if this plugin was used
     "lukas-reineke/indent-blankline.nvim",
     event = "BufReadPre",
     main = "ibl",
