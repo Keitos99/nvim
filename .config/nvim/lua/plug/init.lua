@@ -1,4 +1,5 @@
 return {
+  { "folke/neoconf.nvim" },
   { "mfussenegger/nvim-dap-python", ft = "python", module = false },
   -- plugins that i wrote
   {

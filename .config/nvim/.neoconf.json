@@ -1,0 +1,8 @@
+{
+  "lspconfig": {
+    "lua_ls": {
+      "enabled": true,
+      "Lua.diagnostics.globals": [ "vim" ],
+    },
+  },
+}

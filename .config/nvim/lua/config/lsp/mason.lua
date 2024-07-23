@@ -22,12 +22,14 @@ end
 function M.setup_lsp(mason_lsp_config)
   local lsp = require("plug.lsp.handlers")
   local lspconfig = require("lspconfig")
+  local neoconf = require("neoconf")
 
   -- Automatically setup lsp-servers installed with mason
   local default = vim.tbl_extend("force", lspconfig.util.default_config, {
     capabilities = lsp.capabilities,
   })
 
+  neoconf.setup({}) -- setup neoconf before setting the lsps
   lspconfig.util.default_config = default
   for _, server_name in ipairs(mason_lsp_config.get_installed_servers()) do
     local opts = {}
