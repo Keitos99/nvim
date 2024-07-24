@@ -7,14 +7,14 @@ local M = {
       ["4gl"] = {
         left = 'call dbrte_log_message("',
         right = '")',
-        mid_var = '" + (char)',
-        right_var = ")",
+        mid_var = '" + (char)(',
+        right_var = "))",
       },
       ["e4glide"] = {
         left = 'call dbrte_log_message("',
         right = '")',
-        mid_var = '" + (char)',
-        right_var = ")",
+        mid_var = '" + (char)(',
+        right_var = "))",
       },
     },
   },
