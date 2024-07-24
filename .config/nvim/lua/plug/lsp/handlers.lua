@@ -61,18 +61,6 @@ function M.setup()
       return true
     end
   end
-
-  -- LspAttach autocommand
-  local autocmd = vim.api.nvim_create_autocmd
-  autocmd("LspAttach", {
-    callback = function(args)
-      local bufnr = args.buf
-      local client = vim.lsp.get_client_by_id(args.data.client_id)
-
-      local lsp = require("plug.lsp.handlers")
-      lsp.on_attach(client, bufnr)
-    end,
-  })
 end
 
 function M.on_attach(client, bufnr)
