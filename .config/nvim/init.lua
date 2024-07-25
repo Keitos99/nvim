@@ -2,8 +2,8 @@ vim.loader.enable() -- new experimental lua-loader that byte-compiles and caches
 require("config.options")
 require("config.keymaps")
 require("config.lazy") -- load my plugins
-require("config.autocmds")
 require("config.redir")
+require("config.autocmds")
 
 vim.api.nvim_create_autocmd("User", {
   pattern = "VeryLazy",
@@ -22,3 +22,5 @@ vim.api.nvim_create_autocmd("User", {
     vim.on_key(toggle_hlsearch, ns)
   end,
 })
+
+if vim.g.vscode then return end
