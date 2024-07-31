@@ -6,7 +6,6 @@ M.mason = {
     "lua_ls",
     "pyright",
     "vimls",
-    "clangd",
     "bashls",
     "yamlls",
     "tsserver",

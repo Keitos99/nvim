@@ -32,14 +32,16 @@ function M.setup_lsp(mason_lsp_config)
   neoconf.setup({}) -- setup neoconf before setting the lsps
   lspconfig.util.default_config = default
   for _, server_name in ipairs(mason_lsp_config.get_installed_servers()) do
-    local opts = {}
-    local has_settings, server_opts = pcall(require, "config.lsp.settings." .. server_name)
+    if server_name ~= "tsserver" then
+      local opts = {}
+      local has_settings, server_opts = pcall(require, "config.lsp.settings." .. server_name)
 
-    if has_settings then
-      -- extend with lsp specified configuration
-      opts = vim.tbl_extend("force", lspconfig.util.default_config, server_opts)
+      if has_settings then
+        -- extend with lsp specified configuration
+        opts = vim.tbl_extend("force", lspconfig.util.default_config, server_opts)
+      end
+      lspconfig[server_name].setup(opts)
     end
-    lspconfig[server_name].setup(opts)
   end
 end
 
