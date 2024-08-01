@@ -193,7 +193,7 @@ return {
         enabled = true,
       },
       format = {
-        enabled = true,
+        enabled = false,
         insertSpaces = true,
       },
       codeGeneration = {
