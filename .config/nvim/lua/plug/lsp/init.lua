@@ -5,7 +5,6 @@ local M = {
     dependencies = {
       "nvim-lua/plenary.nvim", -- useful functions
       "ray-x/lsp_signature.nvim", -- show function signature when you type
-      { "folke/neodev.nvim", opts = true },
     },
     config = function()
       local lsp = require("plug.lsp.handlers")
