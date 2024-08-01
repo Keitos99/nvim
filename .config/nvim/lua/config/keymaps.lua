@@ -54,7 +54,7 @@ map({ "n", "v" }, "gp", '"+p', { desc = "Paste from the system clipboard" })
 map("x", "p", '"_dP', { desc = "Paste without changing the registers" })
 
 -- select all
-map("n", "<leader>a", ":keepjumps normal! ggVG<cr>", { desc = "Select all" })
+map("n", "<leader>aa", ":keepjumps normal! ggVG<cr>", { desc = "Select all" })
 
 -- Visual Block --
 -- Move text up and down
@@ -65,9 +65,7 @@ map("x", "K", ":move '<-2<CR>gv-gv", { desc = "Move the selected text up" })
 map({ "n", "x", "o" }, "n", "nzzzv")
 map({ "n", "x", "o" }, "N", "Nzzzv")
 
-map(
-  "n",
-  "<leader>ss",
-  ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>",
-  { desc = "Replace all occurrences of the word under the cursor" }
-)
+map("n", "<leader>ss", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", {
+  silent = false, -- to see the command
+  desc = "Replace all occurrences of the word under the cursor",
+})
