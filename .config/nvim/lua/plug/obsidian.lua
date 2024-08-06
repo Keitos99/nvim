@@ -42,18 +42,21 @@ return {
       time_format = "%H:%M",
     },
 
+    follow_url_func = function(url)
+      -- Open the URL in the default web browser.
+      vim.fn.jobstart({ "xdg-open", url }) -- linux
+    end,
+
+    follow_img_func = function(img)
+      vim.fn.jobstart({ "xdg-open", img }) -- linux
+    end,
+
     ui = {
       checkboxes = {
-        -- NOTE: the 'char' value has to be a single character, and the highlight groups are defined below.
         [" "] = { char = "☐", hl_group = "ObsidianTodo" },
         ["x"] = { char = "", hl_group = "ObsidianDone" },
         [">"] = { char = "", hl_group = "ObsidianRightArrow" },
         ["~"] = { char = "󰰱", hl_group = "ObsidianTilde" },
-        -- Replace the above with this if you don't have a patched font:
-        -- [" "] = { char = "☐", hl_group = "ObsidianTodo" },
-        -- ["x"] = { char = "✔", hl_group = "ObsidianDone" },
-
-        -- You can also add more custom ones...
       },
     },
     attachments = {
