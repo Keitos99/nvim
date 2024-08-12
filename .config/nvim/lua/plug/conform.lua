@@ -19,6 +19,12 @@ return {
     format_on_save = function(bufnr)
       -- disable format on save globally or locally
       if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then return end
+      local bufname = vim.api.nvim_buf_get_name(bufnr)
+
+      -- Obsidian templates should not be formatted
+      local OBSIDIAN_TEMPLATES = vim.fn.expand("~/Documents/Documents/Notes/templates/")
+      local is_template = bufname:find("^" .. vim.fn.expand("~/Documents/Documents/Notes/templates/")) ~= nil
+      if is_template then return end
 
       -- detect slow formatter and run those asynchronously
       if slow_format_filetypes[vim.bo[bufnr].filetype] then return end
