@@ -27,6 +27,7 @@ M.root_patterns = {
   "src",
   ".stylua.toml",
   ".4gl",
+  ".obsidian",
 }
 
 M.tree_sitter_parsers = {
