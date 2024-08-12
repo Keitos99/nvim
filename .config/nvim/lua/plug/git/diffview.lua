@@ -8,7 +8,6 @@ return {
     "DiffviewOpen",
   },
   config = function()
-
     vim.api.nvim_create_user_command("DiffviewToggle", function()
       local diffview = require("diffview")
       local open_view = require("diffview.lib").get_current_view()

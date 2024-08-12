@@ -5,6 +5,7 @@ local M = {
     "williamboman/mason-lspconfig.nvim", -- connects mason with lspconfig
   },
   event = "BufReadPost",
+  cmd = "Mason",
 }
 
 M.config = function()
