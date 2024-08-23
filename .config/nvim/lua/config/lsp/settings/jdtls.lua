@@ -194,7 +194,6 @@ return {
       },
       format = {
         enabled = false,
-        insertSpaces = true,
       },
       codeGeneration = {
         tostring = {
