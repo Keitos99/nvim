@@ -1,5 +1,10 @@
 return {
-  { "folke/neoconf.nvim" },
+  {
+    "folke/neoconf.nvim",
+    lazy = false,
+    opt = true,
+    priority = 1000, -- must be loaded before the lsp servers
+  },
   { "mfussenegger/nvim-dap-python", ft = "python", module = false },
   -- plugins that i wrote
   {
