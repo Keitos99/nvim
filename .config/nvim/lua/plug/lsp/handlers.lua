@@ -1,12 +1,6 @@
-local M = {}
-
 local icons = require("config.ui.icons")
-local signs = {
-  { name = "DiagnosticSignError", text = icons.diagnostics.Error },
-  { name = "DiagnosticSignWarn", text = icons.diagnostics.Warning },
-  { name = "DiagnosticSignHint", text = icons.diagnostics.Hint },
-  { name = "DiagnosticSignInfo", text = icons.diagnostics.Information },
-}
+
+local M = {}
 
 -- Plugins
 local function add_signature(bufnr)
@@ -27,12 +21,11 @@ local function add_signature(bufnr)
 end
 
 M.capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+---@type vim.diagnostic.Opts
 M.DEFAULT_CONFIG = {
   virtual_text = false, -- easily becomes annoying
   virtual_lines = false, -- config for lsp_lines
-  signs = {
-    active = signs,
-  },
   update_in_insert = true,
   underline = true,
   severity_sort = true,
@@ -44,13 +37,17 @@ M.DEFAULT_CONFIG = {
     header = "",
     prefix = "",
   },
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = icons.diagnostics.Error,
+      [vim.diagnostic.severity.WARN] = icons.diagnostics.Warning,
+      [vim.diagnostic.severity.INFO] = icons.diagnostics.Information,
+      [vim.diagnostic.severity.HINT] = icons.diagnostics.Hint,
+    },
+  },
 }
 
 function M.setup()
-  for _, sign in ipairs(signs) do
-    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-  end
-
   vim.diagnostic.config(M.DEFAULT_CONFIG)
 
   -- HACK: workaround for https://github.com/neovim/nvim-lspconfig/issues/2309
