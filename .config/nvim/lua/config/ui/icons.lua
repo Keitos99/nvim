@@ -76,7 +76,7 @@ return {
     Warning = "",
     Information = "",
     Question = "",
-    Hint = "",
+    Hint = "󰌵",
   },
 
   todo = {

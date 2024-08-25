@@ -33,7 +33,7 @@ M.DEFAULT_CONFIG = {
     focusable = false,
     style = "minimal",
     border = "rounded",
-    source = "always",
+    source = true,
     header = "",
     prefix = "",
   },
