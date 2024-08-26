@@ -13,6 +13,7 @@ return {
       { dir = vim.fn.expand("~") .. "/dev/personal/tree-sitter-e4glide" },
       "nvim-treesitter/nvim-treesitter",
     },
+    lazy = false,
     ft = "4gl",
     config = function()
       require("e4glide").setup()
