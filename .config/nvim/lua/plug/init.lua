@@ -8,8 +8,9 @@ return {
   { "mfussenegger/nvim-dap-python", ft = "python", module = false },
   -- plugins that i wrote
   {
-    dir = vim.fn.expand("~") .. "/dev/personal/tree-sitter-e4glide",
+    dir = vim.fn.expand("~") .. "/dev/personal/nvim-e4glide",
     dependencies = {
+      { dir = vim.fn.expand("~") .. "/dev/personal/tree-sitter-e4glide" },
       "nvim-treesitter/nvim-treesitter",
     },
     ft = "4gl",
