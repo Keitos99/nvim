@@ -7,6 +7,17 @@ return {
     "DiffviewToggle",
     "DiffviewOpen",
   },
+  keys = {
+    {
+      "<leader>gdd",
+      ":DiffviewToggle<CR>",
+    },
+    {
+      "<leader>gdm",
+      ":DiffviewOpen main..HEAD<CR>",
+    },
+  },
+
   config = function()
     vim.api.nvim_create_user_command("DiffviewToggle", function()
       local diffview = require("diffview")
