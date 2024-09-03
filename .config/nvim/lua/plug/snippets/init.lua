@@ -4,9 +4,7 @@ local M = {
   dependencies = {
     {
       "rafamadriz/friendly-snippets",
-      config = function()
-        require("luasnip.loaders.from_vscode").lazy_load()
-      end,
+      config = function() require("luasnip.loaders.from_vscode").lazy_load() end,
     },
     {
       "nvim-cmp",
@@ -15,9 +13,7 @@ local M = {
       },
       opts = function(_, opts)
         opts.snippet = {
-          expand = function(args)
-            require("luasnip").lsp_expand(args.body)
-          end,
+          expand = function(args) require("luasnip").lsp_expand(args.body) end,
         }
       end,
     },
@@ -30,18 +26,10 @@ function M.config()
   -- some keymaps
   local keymap = vim.keymap.set
   local opts = { noremap = true, silent = true }
-  keymap("i", "<c-j>", function()
-    require("luasnip").jump(1)
-  end, opts)
-  keymap("s", "<c-j>", function()
-    require("luasnip").jump(1)
-  end, opts)
-  keymap("i", "<c-k>", function()
-    require("luasnip").jump(-1)
-  end, opts)
-  keymap("s", "<c-k>", function()
-    require("luasnip").jump(-1)
-  end, opts)
+  keymap("i", "<c-j>", function() require("luasnip").jump(1) end, opts)
+  keymap("s", "<c-j>", function() require("luasnip").jump(1) end, opts)
+  keymap("i", "<c-k>", function() require("luasnip").jump(-1) end, opts)
+  keymap("s", "<c-k>", function() require("luasnip").jump(-1) end, opts)
 
   ls.config.set_config({
     history = true,
