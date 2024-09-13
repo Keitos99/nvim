@@ -22,5 +22,3 @@ vim.api.nvim_create_autocmd("User", {
     vim.on_key(toggle_hlsearch, ns)
   end,
 })
-
-if vim.g.vscode then return end
