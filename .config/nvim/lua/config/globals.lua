@@ -8,7 +8,7 @@ M.mason = {
     "vimls",
     "bashls",
     "yamlls",
-    "tsserver",
+    "ts_ls",
     "marksman",
     -- "sqls",
   },

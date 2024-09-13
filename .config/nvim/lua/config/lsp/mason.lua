@@ -30,7 +30,7 @@ function M.setup_lsp(mason_lsp_config)
 
   lspconfig.util.default_config = default
   for _, server_name in ipairs(mason_lsp_config.get_installed_servers()) do
-    if server_name ~= "tsserver" then
+    if server_name ~= "ts_ls" then
       local opts = {}
       local has_settings, server_opts = pcall(require, "config.lsp.settings." .. server_name)
 
