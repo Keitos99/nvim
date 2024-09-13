@@ -1,14 +1,33 @@
 return {
+  -- {
+  --   "github/copilot.vim",
+  --   lazy = false,
+  --   init = function()
+  --     vim.keymap.set("i", "<C-a>", 'copilot#Accept("\\<CR>")', {
+  --       expr = true,
+  --       replace_keycodes = false,
+  --     })
+  --     vim.g.copilot_no_tab_map = true
+  --   end,
+  -- },
   {
-    "github/copilot.vim",
+    "zbirenbaum/copilot.lua",
     lazy = false,
-    init = function()
-      vim.keymap.set("i", "<C-a>", 'copilot#Accept("\\<CR>")', {
-        expr = true,
-        replace_keycodes = false,
-      })
-      vim.g.copilot_no_tab_map = true
-    end,
+    opts = {
+      suggestion = {
+        auto_trigger = true,
+        keymap = {
+          accept = "<C-a>",
+          accept_word = false,
+          accept_line = false,
+          next = "<C-j>",
+          prev = "<C-k>",
+          dismiss = "<C-]>",
+        },
+      },
+      -- Node.js version must be > 18.x
+      copilot_node_command = vim.fn.expand("$HOME") .. "/.config/nvm/versions/node/v18.0.0/bin/node",
+    },
   },
   {
     "robitx/gp.nvim",
