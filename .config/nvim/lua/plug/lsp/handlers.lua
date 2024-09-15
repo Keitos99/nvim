@@ -84,7 +84,7 @@ function M.highlight_document(client)
   ]])
 end
 
-function M.load_plugins(client, bufnr) add_signature() end
+function M.load_plugins(client, bufnr) end
 
 function M.set_keymaps(bufnr)
   local fmt = function(cmd)

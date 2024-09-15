@@ -4,7 +4,6 @@ local M = {
     event = { "BufReadPost", "BufNewFile" },
     dependencies = {
       "nvim-lua/plenary.nvim", -- useful functions
-      "ray-x/lsp_signature.nvim", -- show function signature when you type
     },
     config = function()
       local lsp = require("plug.lsp.handlers")
