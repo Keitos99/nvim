@@ -13,9 +13,7 @@ end
 M.keys = {
   {
     "<A-d>", -- on hesitation
-    function()
-      require("lsp_lines").toggle()
-    end,
+    function() require("lsp_lines").toggle() end,
   },
 }
 return M
