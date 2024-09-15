@@ -56,7 +56,8 @@ autocmd("LspAttach", {
     if client == nil then return end
 
     -- do not run on_attach for the GitHub Copilot lsp
-    if client.name == "GitHub Copilot" then return end
+    local copilot_names = { "GitHub Copilot", "copilot" }
+    if vim.tbl_contains(copilot_names, client.name) then return end
 
     local lsp = require("plug.lsp.handlers")
     lsp.on_attach(client, bufnr)
