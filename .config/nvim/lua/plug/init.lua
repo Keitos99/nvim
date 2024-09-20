@@ -12,10 +12,13 @@ return {
     dependencies = {
       { dir = vim.fn.expand("~") .. "/dev/personal/tree-sitter-e4glide" },
       "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons",
+      "hrsh7th/nvim-cmp",
     },
     lazy = false,
     ft = "4gl",
     config = function()
+      require("nvim-web-devicons").setup()
       require("e4glide").setup()
       require("cmp").setup.filetype({ "4gl" }, {
         sources = {
