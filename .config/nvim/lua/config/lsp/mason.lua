@@ -28,9 +28,13 @@ function M.setup_lsp(mason_lsp_config)
     capabilities = lsp.capabilities,
   })
 
+  -- this lsps will be setup manually or by a plugin
+  local do_not_auto_setup = { "tsserver", "ts_ls", "rust_analyzer" }
+
   lspconfig.util.default_config = default
   for _, server_name in ipairs(mason_lsp_config.get_installed_servers()) do
-    if server_name ~= "ts_ls" then
+    local can_be_setup = not vim.tbl_contains(do_not_auto_setup, server_name)
+    if can_be_setup then
       local opts = {}
       local has_settings, server_opts = pcall(require, "config.lsp.settings." .. server_name)
 
