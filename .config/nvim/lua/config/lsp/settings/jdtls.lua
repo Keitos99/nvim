@@ -130,21 +130,6 @@ return {
       },
     })
 
-    local opts = { noremap = true, silent = true, buffer = bufnr, desc = "" }
-    local map = vim.keymap.set
-    map("n", "<A-o>", "<Cmd>lua require('jdtls').organize_imports()<CR>", opts)
-    map("n", "crv", "<Cmd>lua require('jdtls').extract_variable()<CR>", opts)
-    map("v", "crv", "<Esc><Cmd>lua require('jdtls').extract_variable(true)<CR>", opts)
-    map("n", "crc", "<Cmd>lua require('jdtls').extract_constant()<CR>", opts)
-    map("v", "crc", "<Esc><Cmd>lua require('jdtls').extract_constant(true)<CR>", opts)
-    map("n", "crm", "<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>", opts)
-
-    opts.desc = "Test current java class"
-    map("n", "<leader>dC", "<Esc>jdtls.test_class()<CR>", opts)
-
-    opts.desc = "Test nearest java method"
-    map("n", "<leader>dM", "<Esc>jdtls.test_class()<CR>", opts)
-
     require("jdtls.dap").setup_dap_main_class_configs() -- needs to be called to activate the dap function
   end,
   root_dir = ROOT_DIR,

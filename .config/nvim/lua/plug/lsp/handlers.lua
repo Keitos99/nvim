@@ -62,7 +62,7 @@ end
 
 function M.on_attach(client, bufnr)
   M.load_plugins(client, bufnr)
-  M.set_keymaps(bufnr)
+  M.set_keymaps(client.name, bufnr)
   M.highlight_document(client)
 end
 
@@ -86,7 +86,7 @@ end
 
 function M.load_plugins(client, bufnr) end
 
-function M.set_keymaps(bufnr)
+function M.set_keymaps(client_name, bufnr)
   local fmt = function(cmd)
     return function(str) return cmd:format(str) end
   end
@@ -117,6 +117,28 @@ function M.set_keymaps(bufnr)
     function() require("conform").format({ bufnr = bufnr, lsp_format = "fallback", timeout_ms = 500 }) end,
     opts
   )
+
+  -- client name based keymaps
+  if client_name == "jdtls" then
+    map("n", "<A-o>", "<Cmd>lua require('jdtls').organize_imports()<CR>", opts)
+
+    opts.desc = "Test current java class"
+    map("n", "<leader>dC", "<Esc>jdtls.test_class()<CR>", opts)
+
+    opts.desc = "Test nearest java method"
+    map("n", "<leader>dM", "<Esc>jdtls.test_class()<CR>", opts)
+    return
+  end
+
+  if client_name == "tsserver" then
+    map("n", "A-o", "<cmd>TSToolsOrganizeImports<cr>", opts)
+    return
+  end
+
+  if client_name == "pyright" then
+    vim.keymap.set("n", "<A-o>", "<Cmd>PyrightOrganizeImports<CR>", opts)
+    return
+  end
 end
 
 return M

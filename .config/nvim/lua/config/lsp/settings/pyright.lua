@@ -8,10 +8,6 @@ return {
     client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
     return true
   end,
-  on_attach = function(_, bufnr)
-    local opts = { noremap = true, silent = true, buffer = bufnr }
-    vim.keymap.set("n", "<A-o>", "<Cmd>PyrightOrganizeImports<CR>", opts)
-  end,
   settings = {
     python = {
       analysis = {
