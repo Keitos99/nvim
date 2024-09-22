@@ -26,7 +26,6 @@ return {
           TelescopePreviewNormal = { bg = theme.ui.bg_dim },
           TelescopePreviewBorder = { bg = theme.ui.bg_dim, fg = theme.ui.bg_dim },
 
-
           -- Neotest
           NeotestAdapterName = { fg = pallette.autumnRed },
           NeotestDir = { link = "Directory" },
@@ -55,5 +54,7 @@ return {
         }
       end,
     })
+
+    vim.cmd.colorscheme({ "kanagawa-wave" })
   end,
 }
