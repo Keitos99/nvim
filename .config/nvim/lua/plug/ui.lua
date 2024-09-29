@@ -165,7 +165,7 @@ return {
     },
   },
   {
-    -- NOTE: the tohtml command does not work if this plugin was used
+    -- NOTE: the tohtml command does not work if this plugin is enabled
     "lukas-reineke/indent-blankline.nvim",
     event = "BufReadPre",
     main = "ibl",
