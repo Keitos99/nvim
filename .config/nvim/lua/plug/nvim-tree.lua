@@ -66,9 +66,6 @@ local M = {
       },
       special_files = { "Cargo.toml", "Makefile", "README.md", "readme.md", "ReadMe.md" },
     },
-
-    -- TODO: if the directory is named "cvs" (lowercase) then nvim-tree will filter it out
-    filters = { custom = { "CVS" } },
   },
 }
 
