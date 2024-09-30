@@ -1,6 +1,9 @@
 local M = {
   "nvim-treesitter/nvim-treesitter",
   event = "BufReadPost",
+  -- FIX: Waiting for nvim-treesitter to fix till this pull request is merged:
+  -- https://github.com/nvim-treesitter/nvim-treesitter/pull/7202
+  commit = "707313b80a2f1e65fa06dba2052cc49ce6762a60",
   dependencies = {
     "nvim-treesitter/nvim-treesitter-textobjects",
   },
