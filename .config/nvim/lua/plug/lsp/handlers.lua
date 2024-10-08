@@ -123,10 +123,10 @@ function M.set_keymaps(client_name, bufnr)
     map("n", "<A-o>", "<Cmd>lua require('jdtls').organize_imports()<CR>", opts)
 
     opts.desc = "Test current java class"
-    map("n", "<leader>dC", "<Esc>jdtls.test_class()<CR>", opts)
+    map("n", "<leader>dC", "<Cmd>lua require'jdtls'.test_class()<CR>", opts)
 
     opts.desc = "Test nearest java method"
-    map("n", "<leader>dM", "<Esc>jdtls.test_class()<CR>", opts)
+    map("n", "<leader>dM", "<Cmd>lua require'jdtls'.test_nearest_method()<CR>", opts)
     return
   end
 
