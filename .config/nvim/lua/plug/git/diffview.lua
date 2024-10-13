@@ -13,6 +13,7 @@ return {
   cmd = {
     "DiffviewToggle",
     "DiffviewOpen",
+    "DiffviewFileHistory",
   },
   keys = {
     {
