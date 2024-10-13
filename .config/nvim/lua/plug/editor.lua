@@ -199,7 +199,7 @@ return {
   {
     "folke/todo-comments.nvim",
     dependencies = "nvim-lua/plenary.nvim",
-    cmd = { "TodoTrouble", "TodoTelescope" },
+    cmd = { "TodoTelescope" },
     event = "VeryLazy",
     keys = {
       {

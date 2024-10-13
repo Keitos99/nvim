@@ -119,10 +119,6 @@ function M.config()
         jestCommand = require("neotest-jest.jest-util").getJestCommand(vim.fn.expand("%:p:h")) .. " --watch",
       }),
     },
-    quickfix = {
-      enabled = true,
-      open = function() vim.cmd("Trouble quickfix") end,
-    },
   })
   create_user_cmds()
 end

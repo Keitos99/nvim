@@ -20,7 +20,6 @@ local M = {
   },
   require("plug.conform"), -- formatter and linter
   require("plug.lsp.mason"),
-  require("plug.lsp.trouble"),
   require("plug.lsp.lines"),
   require("plug.lsp.fidget"),
   {
