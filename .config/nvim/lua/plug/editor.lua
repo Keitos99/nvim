@@ -44,7 +44,6 @@ return {
       { "<leader>fk", "<cmd>Telescope keymaps<cr>" },
       { "<leader>fO", "<cmd>Telescope vim_options<cr>" },
       { "<leader>fr", "<cmd>Telescope resume<cr>" },
-      { "<leader>fs", "<cmd>Telescope persisted<cr>", desc = "persited sessions" },
       { "<leader>fp", "<cmd>Telescope projects<cr>", desc = "projects" },
       { "<leader>f?", "<cmd>Telescope search_history<cr>", desc = "search history" },
       { "<leader>f;", "<cmd>Telescope command_history<cr>", desc = "command-line history" },
@@ -261,24 +260,5 @@ return {
         },
       })
     end,
-  },
-  {
-    "stevearc/aerial.nvim",
-    keys = { { "<leader>la", "<cmd>AerialToggle!<CR>" } },
-    opts = {
-      on_attach = function(bufnr)
-        -- Jump forwards/backwards with '{' and '}'
-        vim.keymap.set("n", "]a", "<cmd>AerialNext<CR>", { buffer = bufnr })
-        vim.keymap.set("n", "[a", "<cmd>AerialPrev<CR>", { buffer = bufnr })
-      end,
-    },
-    -- Optional dependencies
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "nvim-tree/nvim-web-devicons",
-    },
-    {
-      "delphinus/auto-cursorline.nvim",
-    },
   },
 }
