@@ -15,7 +15,7 @@ return {
         },
       },
       -- Node.js version must be > 18.x
-      copilot_node_command = vim.fn.expand("$HOME") .. "/.config/nvm/versions/node/v18.0.0/bin/node",
+      copilot_node_command = vim.fn.expand("$HOME") .. "/.config/nvm/versions/node/v20.0.0/bin/node",
     },
   },
   {
