@@ -26,7 +26,7 @@ local function create_user_cmds()
   vim.api.nvim_create_user_command(
     "TestToggleSummary",
     function() require("neotest").summary.toggle() end,
-    { nargs = "*", desc = "Run nearest test" }
+    { nargs = "*", desc = "Toggle test summary" }
   )
 end
 
@@ -48,33 +48,60 @@ local M = {
 }
 
 M.keys = {
+
+  {
+    "<leader>tc",
+    function() require("neotest").run.run() end,
+    desc = "Run nearest test",
+  },
+  {
+    "<leader>ta",
+    function() require("neotest").run.run(vim.fn.expand("%")) end,
+    desc = "Run all test of the current file",
+  },
+  {
+    "<leader>td",
+    function() require("neotest").run.run({ vim.fn.expand("%"), strategy = "dap" }) end,
+    desc = "Run nearest test with nvim-dap",
+  },
+  {
+    "<leader>tS",
+    function() require("neotest").run.stop() end,
+    desc = "Run nearest test with nvim-dap",
+  },
   {
     "<leader>tl",
     function() require("neotest").output.open({ enter = true, last_run = true }) end,
+    desc = "Open last test output",
   },
 
   {
     "<leader>ts",
     function() require("neotest").summary.toggle() end,
+    desc = "Toggle test summary",
   },
 
   {
     "<leader>tr",
     function() require("neotest").summary.run_marked() end,
+    desc = "Run marked tests",
   },
 
   {
     "<leader>to",
     function() require("neotest").output_panel.toggle() end,
+    desc = "Toggle test output",
   },
 
   {
     "[n",
     function() require("neotest").jump.prev({ status = "failed" }) end,
+    desc = "Jump to previous failed test",
   },
   {
     "]n",
     function() require("neotest").jump.next({ status = "failed" }) end,
+    desc = "Jump to next failed test",
   },
 }
 
