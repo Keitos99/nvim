@@ -15,7 +15,6 @@ return {
       "nvim-tree/nvim-web-devicons",
       "hrsh7th/nvim-cmp",
     },
-    lazy = false,
     ft = "4gl",
     config = function()
       require("nvim-web-devicons").setup()

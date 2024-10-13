@@ -1,6 +1,6 @@
 return {
   "christoomey/vim-tmux-navigator",
-  lazy = false,
+  cond = os.getenv("TMUX") ~= nil,
   cmd = {
     "TmuxNavigateLeft",
     "TmuxNavigateDown",
