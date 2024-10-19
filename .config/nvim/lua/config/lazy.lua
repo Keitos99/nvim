@@ -19,7 +19,7 @@ require("lazy").setup("plug", {
   defaults = { lazy = true },
   install = {
     missing = true,
-    colorscheme = { "sonokai" },
+    colorscheme = { "kanagawa" },
   },
   performance = {
     cache = {
