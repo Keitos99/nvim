@@ -3,6 +3,6 @@ return {
   lazy = false,
   init = function()
     -- Optional settings go here!
-    vim.g.unception_open_buffer_in_new_tab = false
+    vim.g.unception_open_buffer_in_new_tab = true
   end,
 }
