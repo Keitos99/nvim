@@ -24,6 +24,7 @@ M.root_patterns = {
   "Makefile",
   "makefile",
   "package.json",
+  "tsconfig.json", -- Added for TypeScript projects
   "src",
   ".stylua.toml",
   ".4gl",
