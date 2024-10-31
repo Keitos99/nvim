@@ -8,6 +8,8 @@ return {
       fish = { "fish" },
       lua = { "selene" },
       typescript = { "eslint_d" },
+      html = { "eslint_d" },
+      css = { "eslint_d" },
       -- Use the "*" filetype to run linters on all filetypes.
       -- ['*'] = { 'global linter' },
       -- Use the "_" filetype to run linters on filetypes that don't have other linters configured.
