@@ -130,8 +130,8 @@ function M.set_keymaps(client_name, bufnr)
     return
   end
 
-  if client_name == "tsserver" then
-    map("n", "A-o", "<cmd>TSToolsOrganizeImports<cr>", opts)
+  if client_name == "typescript-tools" then
+    map("n", "<M-o>", "<Cmd>TSToolsRemoveUnused<CR><Cmd>TSToolsAddMissingImports<CR>", opts)
     return
   end
 
