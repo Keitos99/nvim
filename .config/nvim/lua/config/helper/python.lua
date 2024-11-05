@@ -17,7 +17,11 @@ function M.search_venv_python(workspace)
     local python = vim.fn.glob(workspace .. "/" .. "*/bin/python")
     if vim.fn.executable(python) == 1 then return python end
 
+    local old_workspace = workspace
     workspace = vim.fs.dirname(workspace)
+
+    local has_workspace_changed = old_workspace ~= workspace
+    if not has_workspace_changed then return "" end
   end
 
   return ""
