@@ -54,7 +54,7 @@ map({ "n", "v" }, "gp", '"+p', { desc = "Paste from the system clipboard" })
 map("x", "p", '"_dP', { desc = "Paste without changing the registers" })
 
 -- select all
-map("n", "<leader>aa", ":keepjumps normal! ggVG<cr>", { desc = "Select all" })
+map("n", "gaa", ":keepjumps normal! ggVG<cr>", { desc = "Select all" })
 
 -- Visual Block --
 -- Move text up and down
