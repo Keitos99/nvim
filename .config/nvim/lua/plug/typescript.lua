@@ -5,7 +5,4 @@ return {
     opts = true,
     ft = "typescript",
   },
-  {
-    "mxsdev/nvim-dap-vscode-js",
-  },
 }
