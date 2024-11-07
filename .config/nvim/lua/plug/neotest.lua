@@ -76,7 +76,7 @@ M.keys = {
   },
 
   {
-    "<leader>ts",
+    "<leader>tt",
     function() require("neotest").summary.toggle() end,
     desc = "Toggle test summary",
   },
@@ -113,7 +113,7 @@ function M.config()
     adapters = {
       require("neotest-python")({
         dap = { justMyCode = false },
-        python = helper.get_python_path,
+        python = helper.get_python_binary,
       }),
       require("neotest-jest")({
         jestCommand = require("neotest-jest.jest-util").getJestCommand(vim.fn.expand("%:p:h")) .. " --watch",

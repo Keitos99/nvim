@@ -1,12 +1,15 @@
 local M = {}
 local Helper = require("config.helper")
 
-function M.search_venv_python(workspace)
+---Returns the python binary path by looking venv directory.
+---@param workspace string The workspace directory.
+---@return string python_binary_path
+function M.find_venv_python(workspace)
   if workspace == "" then return "" end
 
   if not Helper.is_existing_dir(workspace) then workspace = vim.fs.dirname(workspace) end
 
-  -- Use activated virtublenv.
+  -- If the virtualenv is activated,
   if vim.env.VIRTUAL_ENV then
     local util = require("lspconfig.util")
     local util_path = util.path
@@ -27,17 +30,20 @@ function M.search_venv_python(workspace)
   return ""
 end
 
-function M.get_python_path(file_path)
+function M.get_python_binary(file_path)
   if not file_path or string.len(file_path) == 0 then file_path = vim.api.nvim_buf_get_name(0) end
   -- Find and use venv/python directory
-  local python = M.search_venv_python(file_path)
+  local python = M.find_venv_python(file_path)
   if python ~= "" then return python end
 
   -- Fallback to system Python.
   return vim.fn.exepath("python3") or vim.fn.exepath("python") or "python"
 end
 
-function M.get_py_root(file_path)
+---Returns the root of the project by looking for a virtualenv or a venv directory.
+---@param file_path string A python file path.
+---@return string project_root
+function M.get_project_root(file_path)
   local is_dir = Helper.is_existing_dir(file_path)
   if not is_dir then file_path = vim.fs.dirname(file_path) end
 
@@ -45,7 +51,7 @@ function M.get_py_root(file_path)
   if vim.env.VIRTUAL_ENV then return vim.fs.dirname(vim.env.VIRTUAL_ENV) end
 
   -- search and use virtualenv
-  local python = M.get_python_path(file_path)
+  local python = M.get_python_binary(file_path)
   if python == vim.fn.exepath("python3") or python == vim.fn.exepath("python") then return file_path end
 
   -- TODO: check this:
