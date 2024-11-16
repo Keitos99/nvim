@@ -69,3 +69,11 @@ map("n", "<leader>ss", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", {
   silent = false, -- to see the command
   desc = "Replace all occurrences of the word under the cursor",
 })
+
+local function move_registery(r1, r2) vim.fn.setreg(r1, vim.fn.getreg(r2)) end
+map(
+  "n",
+  "yc",
+  function() move_registery("+", '"') end,
+  { noremap = true, desc = "move contents of anon register to system cliboard register" }
+)
