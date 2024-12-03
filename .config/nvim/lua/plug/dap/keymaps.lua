@@ -6,7 +6,7 @@ return {
     { silent = true },
   },
   {
-    "<leader>drl",
+    "<leader>dl",
     function() require("dap").run_last() end,
     desc = "Run the last debug session again",
     { silent = true },
@@ -30,12 +30,6 @@ return {
     { silent = true },
   },
   {
-    "<leader>dt",
-    ":lua require('dapui').toggle({ reset = true })<CR>",
-    desc = "Toggle UI",
-    { nowait = true },
-  },
-  {
     "<leader>df",
     "<CMD>lua require('dapui').float_element()<CR>",
     desc = "Toggle UI",
@@ -46,12 +40,6 @@ return {
     "<CMD>lua require('dapui').float_element('repl', {position = 'center', enter = true})<CR>",
     desc = "Toggle repl",
     { silent = true },
-  },
-  {
-    "<leader>dlb",
-    ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>",
-    desc = "set logpoints, which be printed into the dap-repl",
-    { nowait = true },
   },
 
   { "<F1>", ":lua require('dapui').toggle({ layout = 1, reset = true })<CR>" },
