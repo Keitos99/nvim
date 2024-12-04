@@ -4,6 +4,7 @@ return {
     lazy = false,
     opts = {
       suggestion = {
+        enabled = false,
         auto_trigger = true,
         keymap = {
           accept = "<C-a>",
@@ -20,7 +21,6 @@ return {
   },
   {
     "CopilotC-Nvim/CopilotChat.nvim",
-    branch = "canary",
     lazy = false,
     dependencies = {
       { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
@@ -29,6 +29,7 @@ return {
     build = "make tiktoken", -- Only on MacOS or Linux
     opts = {
       debug = true, -- Enable debugging
+      chat_autocomplete = true,
       mappings = {
         -- Reset the chat buffer
         reset = {
@@ -54,11 +55,11 @@ return {
           normal = "gmd",
         },
         -- Show the prompt
-        show_system_prompt = {
+        show_info = {
           normal = "gmp",
         },
         -- Show the user selection
-        show_user_selection = {
+        show_context = {
           normal = "gms",
         },
         -- Show help
@@ -70,9 +71,6 @@ return {
     config = function(_, opts)
       local chat = require("CopilotChat")
       chat.setup(opts)
-
-      -- Setup the CMP integration
-      require("CopilotChat.integrations.cmp").setup()
     end,
     keys = {
       { "<leader>aa", "<cmd>CopilotChatToggle<cr>", desc = "CopilotChat - Toggle" },
