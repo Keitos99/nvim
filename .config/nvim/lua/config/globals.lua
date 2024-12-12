@@ -4,7 +4,7 @@ M.mason = {
   tools = { "sql-formatter", "stylua" },
   lsps = {
     "lua_ls",
-    "pyright",
+    "basedpyright",
     "vimls",
     "bashls",
     "yamlls",

@@ -135,7 +135,7 @@ function M.set_keymaps(client_name, bufnr)
     return
   end
 
-  if client_name == "pyright" then
+  if vim.tbl_contains({ "pyright", "basedpyright" }, client_name) then
     vim.keymap.set("n", "<A-o>", "<Cmd>PyrightOrganizeImports<CR>", opts)
     return
   end
