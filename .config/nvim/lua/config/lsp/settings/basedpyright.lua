@@ -12,6 +12,7 @@ return {
   settings = {
     basedpyright = {
       analysis = {
+        diagnosticMode = "workspace",
         typeCheckingMode = "basic", -- TODO: check if it should be true
         diagnosticSeverityOverrides = {
           reportUnusedImport = "warning",
