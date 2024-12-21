@@ -10,13 +10,8 @@ return {
       typescript = { "eslint_d" },
       html = { "eslint_d" },
       css = { "eslint_d" },
-      -- Use the "*" filetype to run linters on all filetypes.
-      -- ['*'] = { 'global linter' },
-      -- Use the "_" filetype to run linters on filetypes that don't have other linters configured.
-      -- ['_'] = { 'fallback linter' },
-      -- ["*"] = { "typos" },
     },
-    -- LazyVim extension to easily override linter options
+    -- Extension to easily override linter options (stolen from LazyVim)
     -- or add custom linters.
     ---@type table<string,table>
     linters = {
