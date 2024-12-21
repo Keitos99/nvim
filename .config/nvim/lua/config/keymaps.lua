@@ -26,6 +26,9 @@ end
 
 map("", "<Space>", "<Nop>")
 
+-- easily exit terminal mode
+map("t", "<esc><esc>", "<c-\\><c-n>")
+
 -- moving between windows NOTE: will be overwritten by vim-tmux-navigator
 map("n", "<C-h>", "<C-w>h", { desc = "Move to the window to the left" })
 map("n", "<C-j>", "<C-w>j", { desc = "Move to the window below" })
