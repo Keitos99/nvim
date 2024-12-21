@@ -146,6 +146,7 @@ return {
           {
             name = "JavaSE-1.8",
             path = HOME .. "/.local/jdks/jdk8u332-b09/",
+            default = true,
           },
           {
             name = "JavaSE-11",
@@ -162,7 +163,6 @@ return {
           {
             name = "JavaSE-17",
             path = HOME .. "/.local/jdks/jdk-17.0.2+8/",
-            default = true,
           },
           {
             name = "JavaSE-18",
