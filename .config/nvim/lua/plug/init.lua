@@ -13,7 +13,6 @@ return {
       { dir = vim.fn.expand("~") .. "/dev/personal/tree-sitter-e4glide" },
       "nvim-treesitter/nvim-treesitter",
       "nvim-tree/nvim-web-devicons",
-      "hrsh7th/nvim-cmp",
     },
     ft = "4gl",
     init = function()
@@ -47,14 +46,6 @@ return {
     config = function()
       require("nvim-web-devicons").setup()
       require("e4glide").setup()
-      require("cmp").setup.filetype({ "4gl" }, {
-        sources = {
-          { name = "nvim_lsp" },
-          { name = "luasnip" },
-          { name = "buffer" },
-          { name = "path" },
-        },
-      })
     end,
   },
   {
