@@ -36,10 +36,10 @@ map("n", "<C-k>", "<C-w>k", { desc = "Move to the window above" })
 map("n", "<C-l>", "<C-w>l", { desc = "Move to the window to the right" })
 
 local resize_window = require("config.helper.window").resize_window
-map("n", "<C-Up>", function() resize_window("j", 2) end, { desc = "Increase the window height" })
-map("n", "<C-Down>", function() resize_window("j", -2) end, { desc = "Decrease the window height" })
-map("n", "<C-Right>", function() resize_window("h", 2) end, { desc = "Increase the window width" })
-map("n", "<C-Left>", function() resize_window("h", -2) end, { desc = "Decrease the window width" })
+map("n", "<M-j>", function() resize_window("j", 2) end, { desc = "Increase the window height" })
+map("n", "<M-k>", function() resize_window("j", -2) end, { desc = "Decrease the window height" })
+map("n", "<M-l>", function() resize_window("h", 2) end, { desc = "Increase the window width" })
+map("n", "<M-h>", function() resize_window("h", -2) end, { desc = "Decrease the window width" })
 
 -- buffers
 map("n", "<S-q>", ":bdelete<CR>", { desc = "Close the current buffer" })

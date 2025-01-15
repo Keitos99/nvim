@@ -44,7 +44,7 @@ function M.config()
       },
     },
     swap = {
-      enable = true,
+      enable = false,
       swap_next = {
         ["<A-l>"] = "@parameter.inner",
       },
