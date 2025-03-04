@@ -117,9 +117,7 @@ function M.config()
         python = helper.get_python_binary,
       }),
       require("neotest-jest")({
-        jestCommand = function()
-          return require("neotest-jest.jest-util").getJestCommand(vim.fn.expand("%:p:h")) .. " --watch"
-        end,
+        jestCommand = function() return require("neotest-jest.jest-util").getJestCommand(vim.fn.expand("%:p:h")) end,
       }),
     },
   })
