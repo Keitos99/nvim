@@ -11,30 +11,33 @@ return {
   {
     "mfussenegger/nvim-dap", -- debug adapter protocol client implementation for neovim
     dependencies = {
-      "rcarriga/nvim-dap-ui", -- a UI for nvim-dap
+      -- "rcarriga/nvim-dap-ui", -- a UI for nvim-dap
       "nvim-neotest/nvim-nio", -- dependency of nvim-dap-ui
+      "igorlfs/nvim-dap-view",
     },
     config = function()
       local dap = require("dap")
       local keymap = vim.keymap
 
-      local dapui = require("plug.dap.ui")
+      local dv = require("dap-view")
       local startDap = function()
         keymap.set("n", "<down>", dap.step_over)
         keymap.set("n", "<right>", dap.step_into)
         keymap.set("n", "<left>", dap.step_out)
-        dapui.open({ layout = 1 }) -- only show console and repl
+        dv.open()
       end
 
       local stopDap = function()
         pcall(keymap.del, "n", "<down>")
         pcall(keymap.del, "n", "<left>")
         pcall(keymap.del, "n", "<right>")
+        dv.close()
       end
 
-      dap.listeners.after.event_initialized["dapui_config"] = startDap
-      dap.listeners.before.event_terminated["dapui_config"] = stopDap
-      dap.listeners.before.event_exited["dapui_config"] = stopDap
+      dap.listeners.before.attach["dap-view-config"] = startDap
+      dap.listeners.before.launch["dap-view-config"] = startDap
+      dap.listeners.before.event_terminated["dap-view-config"] = stopDap
+      dap.listeners.before.event_exited["dap-view-config"] = stopDap
 
       for _, sign in ipairs(signs) do
         vim.fn.sign_define(sign.name, { texthl = sign.highlight, text = sign.text, numhl = "" })
