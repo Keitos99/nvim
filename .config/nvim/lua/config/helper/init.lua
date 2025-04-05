@@ -2,29 +2,6 @@ local M = {}
 
 function M.is_existing_dir(path) return vim.fn.isdirectory(path) == 1 end
 
----@return number: number of listed/open buffers
-function M.get_number_of_buffers()
-  local possible_buffers = vim.fn.range(1, vim.fn.bufnr("$"))
-  local unlisted_buffers = vim.fn.filter(possible_buffers, "buflisted(v:val)")
-  local number_of_listed_buffers = vim.fn.len(unlisted_buffers)
-  return number_of_listed_buffers
-end
-
-function M.exists(path)
-  local stat = vim.loop.fs_stat(path)
-  return stat ~= nil
-end
-
-function M.sync_job(cmd, args)
-  local Job = require("plenary.job")
-  local job = Job:new({
-    command = cmd,
-    args = args,
-  })
-  job:sync()
-  return job:result()
-end
-
 function M.has_value(table, element)
   if type(table) ~= "table" then return false end
 
@@ -100,6 +77,19 @@ function M.get_module(fname)
   return ""
 end
 
-function M.has(plugin) return require("plug")[plugin] ~= nil end
+---@param plugin_name string
+---@return boolean
+function M.has_plugin(plugin_name) return require("lazy.core.config").plugins[plugin_name] ~= nil end
+
+function M.get_installed_plugins()
+  local plugins = require("lazy").plugins()
+  local plugin_names = {}
+
+  for _, plugin in ipairs(plugins) do
+    table.insert(plugin_names, plugin.name)
+  end
+
+  return plugin_names
+end
 
 return M
