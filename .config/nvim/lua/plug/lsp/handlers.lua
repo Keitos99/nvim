@@ -66,11 +66,6 @@ function M.on_attach(client, bufnr)
   M.highlight_document(client)
 end
 
-function M.extend_with_telescope(telescope)
-  -- changing ui with plugins
-  vim.lsp.handlers["textDocument/references"] = telescope.lsp_references
-end
-
 function M.highlight_document(client)
   -- Set autocommands conditional on server_capabilities
   if not client.server_capabilities.document_highlight then return end
@@ -101,11 +96,12 @@ function M.set_keymaps(client_name, bufnr)
   -- gr: references
   -- K: hover
 
+  map("n", "grr", "<cmd>Telescope lsp_references<CR>", opts)
   map("n", "gD", lsp("buf.declaration()"), opts)
-  map("n", "gd", lsp("buf.definition()"), opts)
-  map("n", "gi", lsp("buf.implementation()<CR>"), opts)
-  map("n", "<leader>rn", lsp("buf.rename()"), opts)
-  map("n", "<leader>ca", lsp("buf.code_action()"), opts)
+  map("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
+  map("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts) -- gri
+  map("n", "<leader>rn", lsp("buf.rename()"), opts) -- or grn
+  map("n", "<leader>ca", lsp("buf.code_action()"), opts) -- or gra
 
   map("n", "gl", diagnostic("open_float()"), opts)
   map("n", "[d", diagnostic("goto_prev({ border = 'rounded' })") .. "zz", opts)
