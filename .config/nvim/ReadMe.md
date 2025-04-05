@@ -2,14 +2,14 @@
 
 ## Tmux resize support
 
-- resize using tmux if:
-  - Case1: two pane and nvim has only one window: nvim window is at left edge of tab && and there is pane left to nvim. The same for right
-    - move with tmux
-  - Case 2: two panes and two nvim window. nvim is on the right pane. Press M-l
-    - on right nvim window then: use nvim logic
-    - on left nvim window: use nvim logic
-    - on left pane: use tmux logic
-  - Case 2: two panes and two nvim window. nvim is on the right pane. Press M-h
-    - on right nvim window then: use nvim logic
-    - on left nvim window: use nvim logic
-    - on left pane: use tmux logic
+- Resize using Tmux if:
+  - Case 1: Two panes and Neovim has only one window: Neovim window is at the left edge of the tab, and there is a pane to the left of Neovim. The same applies for the right.
+    - Move with Tmux.
+  - Case 2: Two panes and two Neovim windows. Neovim is on the right pane. Press `M-l`:
+    - On the right Neovim window: use Neovim logic.
+    - On the left Neovim window: use Neovim logic.
+    - On the left pane: use Tmux logic.
+  - Case 2: Two panes and two Neovim windows. Neovim is on the right pane. Press `M-h`:
+    - On the right Neovim window: use Neovim logic.
+    - On the left Neovim window: use Neovim logic.
+    - On the left pane: use Tmux logic.
