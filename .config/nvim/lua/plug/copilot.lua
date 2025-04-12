@@ -1,7 +1,7 @@
 return {
   {
     "zbirenbaum/copilot.lua",
-    lazy = false,
+    event = "InsertEnter",
     opts = {
       suggestion = {
         enabled = false,
@@ -21,7 +21,20 @@ return {
   },
   {
     "CopilotC-Nvim/CopilotChat.nvim",
-    lazy = false,
+    cmd = {
+      "CopilotChat",
+      "CopilotChatOpen",
+      "CopilotChatClose",
+      "CopilotChatToggle",
+      "CopilotChatStop",
+      "CopilotChatReset",
+      "CopilotChatSave",
+      "CopilotChatLoad",
+      "CopilotChatPrompts",
+      "CopilotChatModels",
+      "CopilotChatAgents",
+      "CopilotChat",
+    },
     dependencies = {
       { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
       { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
