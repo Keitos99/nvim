@@ -1,7 +1,19 @@
 -- tailwind-tools.lua
+---@type LazyPluginSpec
 return {
   "luckasRanarison/tailwind-tools.nvim",
-  lazy = false,
+  ft = {
+    "html",
+    "svelte",
+    "css",
+    "javascript",
+    "typescript",
+    "javascriptreact",
+    "typescriptreact",
+    "vue",
+    "php",
+    "astro",
+  },
   name = "tailwind-tools",
   build = ":UpdateRemotePlugins",
   dependencies = {
