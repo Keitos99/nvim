@@ -4,13 +4,15 @@ M.mason = {
   tools = { "sql-formatter", "stylua" },
   lsps = {
     "lua_ls",
-    "basedpyright",
     "vimls",
     "bashls",
     "yamlls",
-    "ts_ls",
+    "basedpyright",
     "marksman",
-    -- "sqls",
+    "ts_ls",
+    "svelte",
+    "tailwindcss",
+    "cssls",
   },
   install_dir = vim.fn.stdpath("data") .. "/mason",
 }
