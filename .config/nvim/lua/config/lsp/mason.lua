@@ -28,7 +28,7 @@ function M.setup_lsp(mason_lsp_config)
     capabilities = lsp.capabilities,
   })
 
-  -- this lsps will be setup manually or by a plugin
+  -- These LSPs will be setup manually or by a plugin
   local do_not_auto_setup = { "tsserver", "ts_ls", "rust_analyzer" }
 
   lspconfig.util.default_config = default
