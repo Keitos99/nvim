@@ -11,7 +11,6 @@ return {
   {
     "mfussenegger/nvim-dap", -- debug adapter protocol client implementation for neovim
     dependencies = {
-      -- "rcarriga/nvim-dap-ui", -- a UI for nvim-dap
       "nvim-neotest/nvim-nio", -- dependency of nvim-dap-ui
       "igorlfs/nvim-dap-view",
     },
@@ -24,6 +23,7 @@ return {
         keymap.set("n", "<down>", dap.step_over)
         keymap.set("n", "<right>", dap.step_into)
         keymap.set("n", "<left>", dap.step_out)
+
         dv.open()
       end
 
@@ -31,7 +31,6 @@ return {
         pcall(keymap.del, "n", "<down>")
         pcall(keymap.del, "n", "<left>")
         pcall(keymap.del, "n", "<right>")
-        dv.close()
       end
 
       dap.listeners.before.attach["dap-view-config"] = startDap

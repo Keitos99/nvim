@@ -42,10 +42,7 @@ return {
     { silent = true },
   },
 
-  { "<F1>", ":lua require('dapui').toggle({ layout = 1, reset = true })<CR>" },
-  { "<F2>", ":lua require('dapui').toggle({ layout = 2, reset = true })<CR>" },
-  { "<F3>", ":lua require('dapui').toggle({ layout = 3, reset = true })<CR>" },
-  { "<F4>", ":lua require('dapui').toggle({ layout = 4, reset = true })<CR>" },
+  { "<F1>", ":lua require('dap-view').toggle(true)<CR>" },
 
   { "<F8>", ":lua require('dap').step_over()<CR>" },
   { "<F9>", ":lua require('dap').continue()<CR>" },
