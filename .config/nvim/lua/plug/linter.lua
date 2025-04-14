@@ -9,6 +9,7 @@ return {
       lua = { "selene" },
       html = { "eslint_d" },
       css = { "eslint_d" },
+      python = { "ruff" },
     },
     -- Extension to easily override linter options (stolen from LazyVim)
     -- or add custom linters.
