@@ -7,7 +7,6 @@ return {
     linters_by_ft = {
       fish = { "fish" },
       lua = { "selene" },
-      typescript = { "eslint_d" },
       html = { "eslint_d" },
       css = { "eslint_d" },
     },

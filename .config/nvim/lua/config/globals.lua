@@ -11,6 +11,7 @@ M.mason = {
     "marksman",
     "ts_ls",
     "svelte",
+    "eslint", -- eslint-lsp
     "tailwindcss",
     "cssls",
   },
