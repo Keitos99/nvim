@@ -135,7 +135,11 @@ return {
         theme = "auto",
         disabled_filetypes = {
           statusline = {},
-          winbar = {},
+          winbar = {
+            "dap-view",
+            "dap-repl",
+            "dap-view-term",
+          },
         },
         ignore_focus = {},
         always_divide_middle = true,
