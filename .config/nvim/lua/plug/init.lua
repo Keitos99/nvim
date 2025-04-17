@@ -15,34 +15,6 @@ return {
       "nvim-tree/nvim-web-devicons",
     },
     ft = "4gl",
-    init = function()
-      local client = vim.lsp.start_client({
-        name = "lsp-e4glide",
-        cmd = {
-          vim.fn.expand("$HOME") .. "/.config/nvm/versions/node/v20.0.0/bin/node",
-          vim.fn.expand("$HOME") .. "/dev/personal/lsp-e4glide/dist/index.js",
-          "--stdio",
-        },
-        settings = {
-          e4gl = {
-            diagnostic = false,
-          },
-        },
-      })
-
-      if not client then
-        vim.notify("Client could not be started")
-        return
-      end
-
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = "4gl",
-        callback = function()
-          vim.notify("Attaching lsp-e4glide client")
-          vim.lsp.buf_attach_client(0, client)
-        end,
-      })
-    end,
     config = function()
       require("nvim-web-devicons").setup()
       require("e4glide").setup()
