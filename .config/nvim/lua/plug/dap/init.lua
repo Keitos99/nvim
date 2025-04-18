@@ -67,4 +67,6 @@ return {
     keys = require("plug.dap.keymaps"),
   },
   require("plug.dap.print"),
+
+  { "mfussenegger/nvim-dap-python", ft = "python", module = false },
 }

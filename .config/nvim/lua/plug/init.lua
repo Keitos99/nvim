@@ -1,11 +1,4 @@
 return {
-  {
-    "folke/neoconf.nvim",
-    lazy = false,
-    opt = true,
-    priority = 1000, -- must be loaded before the lsp servers
-  },
-  { "mfussenegger/nvim-dap-python", ft = "python", module = false },
   -- plugins that i wrote
   {
     dir = vim.fn.expand("~") .. "/dev/personal/nvim-e4glide",
