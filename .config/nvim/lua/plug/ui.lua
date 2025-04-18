@@ -21,47 +21,6 @@ return {
       vim.notify = require("notify")
     end,
   },
-  -- better vim.ui
-  {
-    "stevearc/dressing.nvim",
-    lazy = false,
-    opts = {
-      input = {
-        -- Default prompt string
-        default_prompt = "Input:",
-
-        -- Can be 'left', 'right', or 'center'
-        prompt_align = "center",
-
-        -- When true, <Esc> will close the modal
-        insert_only = false,
-
-        -- These are passed to nvim_open_win
-        border = "rounded",
-        -- 'editor' and 'win' will default to being centered
-        relative = "cursor",
-
-        win_options = {
-          -- Window transparency (0-100)
-          winblend = 10,
-        },
-      },
-      select = {
-        -- Set to false to disable the vim.ui.select implementation
-        enabled = true,
-
-        -- Priority list of preferred vim.select implementations
-        backend = { "telescope", "fzf_lua", "fzf", "builtin", "nui" },
-
-        -- Trim trailing `:` from prompt
-        trim_prompt = true,
-
-        -- Options for telescope selector
-        -- These are passed into the telescope picker directly. Can be used like:
-        -- telescope = require('telescope.themes').get_ivy({...})
-      },
-    },
-  },
   {
     "romgrk/barbar.nvim",
     event = { "BufAdd" },

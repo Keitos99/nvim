@@ -14,6 +14,7 @@ return {
     -- installed and loaded.
     cond = function() return vim.fn.executable("make") == 1 end,
   },
+  { "nvim-telescope/telescope-ui-select.nvim" },
   {
     -- Fuzzy finder
     "nvim-telescope/telescope.nvim",
@@ -21,6 +22,7 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
+    event = "VeryLazy",
     cmd = { "Telescope" },
     keys = {
 
@@ -50,8 +52,7 @@ return {
       { "<leader>fc", "<cmd>Telescope commands<cr>", desc = "execute command" },
     },
     config = function()
-      local status_ok, telescope = pcall(require, "telescope")
-      if not status_ok then return end
+      local telescope = require("telescope")
 
       local actions = require("telescope.actions")
 
@@ -137,6 +138,7 @@ return {
 
       require("telescope").load_extension("projects")
       require("telescope").load_extension("fzf")
+      require("telescope").load_extension("ui-select")
     end,
   },
   {
