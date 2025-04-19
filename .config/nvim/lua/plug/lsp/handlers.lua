@@ -104,8 +104,8 @@ function M.set_keymaps(client_name, bufnr)
   map("n", "<leader>ca", lsp("buf.code_action()"), opts) -- or gra
 
   map("n", "gl", diagnostic("open_float()"), opts)
-  map("n", "[d", diagnostic("goto_prev({ border = 'rounded' })") .. "zz", opts)
-  map("n", "]d", diagnostic("goto_next({ border = 'rounded' })") .. "zz", opts)
+  map("n", "[d", diagnostic("jump({ count=-1 })") .. "zz", opts)
+  map("n", "]d", diagnostic("jump({ count=1 })") .. "zz", opts)
 
   map(
     "n",
