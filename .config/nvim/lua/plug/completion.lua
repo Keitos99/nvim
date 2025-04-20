@@ -108,14 +108,6 @@ function M.config(_, opts)
       { name = "dap" },
     },
   })
-  require("cmp").setup.filetype({ "lua" }, {
-    sources = {
-      { name = "nvim_lsp" },
-      { name = "luasnip" },
-      { name = "buffer" },
-      { name = "path" },
-    },
-  })
 end
 
 return M
