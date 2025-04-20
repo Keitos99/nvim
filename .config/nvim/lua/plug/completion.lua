@@ -5,7 +5,6 @@ local M = {
     "hrsh7th/cmp-buffer", -- buffer completions
     "hrsh7th/cmp-path", -- path completions
     "hrsh7th/cmp-nvim-lsp", -- cmp for lsp
-    "hrsh7th/cmp-nvim-lua", -- cmp for lua
     "rcarriga/cmp-dap", -- nvim-cmp source for nvim-dap REPL and nvim-dap-ui buffers
     "onsails/lspkind.nvim", -- adds vscode-like pictograms to neovim built-in lsp
   },
@@ -113,7 +112,6 @@ function M.config(_, opts)
   })
   require("cmp").setup.filetype({ "lua" }, {
     sources = {
-      { name = "nvim_lua" },
       { name = "nvim_lsp" },
       { name = "luasnip" },
       { name = "buffer" },
