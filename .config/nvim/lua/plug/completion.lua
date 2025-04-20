@@ -4,7 +4,7 @@ local M = {
   dependencies = {
     "hrsh7th/cmp-buffer", -- buffer completions
     "hrsh7th/cmp-path", -- path completions
-    "hrsh7th/cmp-nvim-lsp", -- cmp for lsp
+    "hrsh7th/cmp-nvim-lsp", --
     "rcarriga/cmp-dap", -- nvim-cmp source for nvim-dap REPL and nvim-dap-ui buffers
     "onsails/lspkind.nvim", -- adds vscode-like pictograms to neovim built-in lsp
   },
@@ -94,9 +94,7 @@ local M = {
       },
 
       -- enable cmp_dap
-      enabled = function()
-        return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt" or require("cmp_dap").is_dap_buffer()
-      end,
+      enabled = function() return vim.bo.buftype ~= "prompt" or require("cmp_dap").is_dap_buffer() end,
     }
   end,
 }
