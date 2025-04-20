@@ -2,6 +2,16 @@ local M = {}
 
 function M.is_existing_dir(path) return vim.fn.isdirectory(path) == 1 end
 
+---@param path string
+---@return string
+function M.read_file(path)
+  local fd = assert(vim.uv.fs_open(path, "r", 438))
+  local stat = assert(vim.uv.fs_fstat(fd))
+  local data = assert(vim.uv.fs_read(fd, stat.size, 0))
+  assert(vim.uv.fs_close(fd))
+  return data
+end
+
 function M.has_value(table, element)
   if type(table) ~= "table" then return false end
 
