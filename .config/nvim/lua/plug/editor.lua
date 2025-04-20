@@ -14,13 +14,13 @@ return {
     -- installed and loaded.
     cond = function() return vim.fn.executable("make") == 1 end,
   },
-  { "nvim-telescope/telescope-ui-select.nvim" },
   {
     -- Fuzzy finder
     "nvim-telescope/telescope.nvim",
     branch = "0.1.x", -- release branch, which can have breaking changes
     dependencies = {
       "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope-ui-select.nvim",
     },
     event = "VeryLazy",
     cmd = { "Telescope" },
