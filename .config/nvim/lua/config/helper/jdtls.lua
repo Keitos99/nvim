@@ -74,25 +74,36 @@ local function read_libs(project_root)
   end
 
   -- There is .classpath file
-  local number_of_non_existent_jars = 0
-  local extract_classpathentries_cmd = "grep 'classpathentry kind=\"lib\"' "
-    .. project_root
-    .. "/.classpath | sed 's/.*classpathentry kind=\"lib\" path=\"//' | sed 's/\".*//'"
+  local grep_classpathentries_cmd = "grep 'classpathentry kind=\"lib\"' " .. project_root .. "/.classpath"
+  local extract_entry_paths_cmd = 'sed \'s/.*classpathentry kind="lib" path="//\''
+  local remove_xml_suffix_cmd = "sed 's/\".*//'"
+
+  local extract_classpathentries_cmd = grep_classpathentries_cmd
+    .. " | "
+    .. extract_entry_paths_cmd
+    .. " | "
+    .. remove_xml_suffix_cmd
   local jars = require("config.helper").cmd_to_table(extract_classpathentries_cmd)
 
   local new_table = {}
+  local invalid_entries = {}
   for _, jar_file in ipairs(jars) do
     jar_file = project_root .. "/" .. jar_file
     if vim.fn.filereadable(jar_file) == 1 then
       table.insert(new_table, jar_file)
     else
-      number_of_non_existent_jars = number_of_non_existent_jars + 1
+      table.insert(invalid_entries, jar_file)
     end
   end
 
-  if number_of_non_existent_jars > 0 then
+  if #invalid_entries > 0 then
+    local result = table.concat(invalid_entries, "\n")
     vim.notify(
-      string.format("There are %s entries in the .classpath file, that do not exist!", number_of_non_existent_jars),
+      "There are "
+        .. #invalid_entries
+        .. " entries in the .classpath file, that do not exist!\n"
+        .. "Restart the JDTLS LSP after removing the following entries:\n"
+        .. result,
       vim.log.levels.ERROR
     )
   end
