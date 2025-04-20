@@ -1,6 +1,4 @@
 local icons = require("config.ui.icons")
-local doc_icons = icons.documents
-local git_icons = icons.nvim_tree.git
 
 local M = {
   "kyazdani42/nvim-tree.lua",
@@ -50,18 +48,6 @@ local M = {
           folder = true,
           folder_arrow = true,
           git = true,
-        },
-        glyphs = {
-          default = doc_icons.File.Default,
-          symlink = doc_icons.File.Symlink,
-          folder = {
-            default = doc_icons.Folder.Default,
-            open = doc_icons.Folder.Open,
-            empty = doc_icons.Folder.Empty,
-            empty_open = doc_icons.Folder.EmptyOpen,
-            symlink = doc_icons.Folder.Symlink,
-          },
-          git = git_icons,
         },
       },
       special_files = { "Cargo.toml", "Makefile", "README.md", "readme.md", "ReadMe.md" },
