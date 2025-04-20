@@ -5,8 +5,6 @@ return {
     -- HACK: set the pythonPath based of the project
     -- using infos from https://github.com/neovim/nvim-lspconfig/wiki/Project-local-settings#configure-in-your-personal-settings-initlua
     client.config.settings.python.pythonPath = helper.get_python_binary(vim.api.nvim_buf_get_name(0))
-    venvPath = helper.get_project_root(vim.api.nvim_buf_get_name(0)):gsub("/bin/python$", "")
-    print("AGYP[81]: basedpyright.lua:8: venvPath=" .. vim.inspect(venvPath))
     client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
     return true
   end,
