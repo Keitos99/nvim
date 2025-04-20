@@ -1,20 +1,16 @@
 local jdtls = require("jdtls")
 local lsp = require("plug.lsp.handlers")
-local global = require("config.globals").jdtls
 
-local HOME = os.getenv("HOME")
-local XDG_DATA_HOME = os.getenv("XDG_DATA_HOME")
+local HOME = vim.env.HOME
+local XDG_DATA_HOME = vim.env.XDG_DATA_HOME
+
+local JAVA_VM_ARGS = vim.env.NVIM_JDTLS_VM_ARGS and vim.env.NVIM_JDTLS_VM_ARGS or ""
+local JAVA_ARGS = vim.env.NVIM_JDTLS_ARGS and vim.env.NVIM_JDTLS_ARGS or ""
 
 local LSP_SERVER = HOME .. "/dev/eclipse/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/"
 local JAVA = HOME .. "/.local/jdks/jdk-21.0.6+7/bin/java" -- NOTE: must be the same as the one to compile jdtls and jdtls-dap
 local WORKSPACE_PATH = XDG_DATA_HOME .. "/jdtls-workspace/"
 local CONFIG = "linux"
-
--- set the capabilities
-local capabilities = lsp.capabilities
-local extendedClientCapabilities = jdtls.extendedClientCapabilities
-extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
-capabilities = vim.tbl_deep_extend("force", extendedClientCapabilities, capabilities)
 
 local ROOT_MARKERS = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle", "src" }
 local JAR_PATTERNS = {
@@ -31,6 +27,11 @@ assert(ROOT_DIR ~= nil and ROOT_DIR ~= "", "Root directory can not be determined
 
 local PROJECT_NAME = vim.fn.fnamemodify(ROOT_DIR, ":p:h:t")
 local WORKSPACE_DIR = WORKSPACE_PATH .. PROJECT_NAME
+
+-- set the capabilities
+local extendedClientCapabilities = jdtls.extendedClientCapabilities
+extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
+local capabilities = vim.tbl_deep_extend("force", extendedClientCapabilities, lsp.capabilities)
 
 -- npm install broke: https://github.com/npm/cli/issues/2508
 -- So gather the required jars manually; this is based on the gulpfile.js in the vscode-java-test repo
@@ -67,6 +68,7 @@ end
 
 local function read_libs(project_root)
   if not (vim.fn.filereadable(project_root .. "/.classpath") == 1) then
+    -- Classpath file not found. Just import all the lib jars that can be found.
     local find_jar_libs_cmd = "find " .. project_root .. "/libs -type f | grep jar"
     return require("config.helper").cmd_to_table(find_jar_libs_cmd)
   end
@@ -90,7 +92,8 @@ local function read_libs(project_root)
 
   if number_of_non_existent_jars > 0 then
     vim.notify(
-      string.format("There are %s entries in the .classpath file, that do not exist!", number_of_non_existent_jars)
+      string.format("There are %s entries in the .classpath file, that do not exist!", number_of_non_existent_jars),
+      vim.log.levels.ERROR
     )
   end
   return new_table
@@ -125,8 +128,8 @@ return {
     jdtls.setup_dap({
       hotcodereplace = "auto",
       config_overrides = {
-        vmArgs = global.vmArgs,
-        args = global.args,
+        vmArgs = JAVA_VM_ARGS,
+        args = JAVA_ARGS,
       },
     })
 
@@ -139,9 +142,6 @@ return {
     java = {
       signatureHelp = { enabled = true },
       configuration = {
-        -- See https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
-        -- And search for `interface RuntimeOption`
-        -- The `name` is NOT arbitrary, but must match one of the elements from `enum ExecutionEnvironment` in the link above
         runtimes = {
           {
             name = "JavaSE-1.8",
@@ -177,9 +177,6 @@ return {
       referenceCodeLens = {
         enabled = true,
       },
-      format = {
-        enabled = false,
-      },
       codeGeneration = {
         tostring = {
           listArrayContents = true,
@@ -192,10 +189,6 @@ return {
         },
         generateComments = false,
         insertLocation = true,
-      },
-      maven = {
-        downloadSources = true,
-        updateSnapshots = true,
       },
     },
   },

@@ -51,9 +51,4 @@ M.tree_sitter_parsers = {
   "vimdoc",
 }
 
-M.jdtls = {
-  vmArgs = vim.env.NVIM_JDTLS_VM_ARGS and vim.env.NVIM_JDTLS_VM_ARGS or "",
-  args = vim.env.NVIM_JDTLS_ARGS and vim.env.NVIM_JDTLS_ARGS or "",
-}
-
 return M
