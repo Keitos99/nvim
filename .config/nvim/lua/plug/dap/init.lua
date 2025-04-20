@@ -68,5 +68,28 @@ return {
   },
   require("plug.dap.print"),
 
-  { "mfussenegger/nvim-dap-python", ft = "python", module = false },
+  {
+    "mfussenegger/nvim-dap-python",
+    ft = "python",
+    priority = 10000,
+    config = function()
+      local helper = require("config.helper.python")
+      local py_dap = require("dap-python")
+      local debug_server = vim.env.HOME .. "/dev/microsoft/debugpy/bin/python"
+
+      -- dynamically determine the python path
+      py_dap.resolve_python = function()
+        local current_file = vim.api.nvim_buf_get_name(0)
+        return helper.get_python_binary(current_file)
+      end
+
+      py_dap.setup(debug_server, {
+        justMyCode = false,
+        include_configs = true,
+      })
+      local current_file = vim.api.nvim_buf_get_name(0)
+      local project_root = helper.get_project_root(current_file)
+      helper.add_python_dap_configuration(project_root)
+    end,
+  },
 }

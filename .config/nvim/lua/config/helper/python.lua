@@ -5,20 +5,28 @@ local Helper = require("config.helper")
 ---@param workspace string The workspace directory.
 ---@return string python_binary_path
 function M.find_venv_python(workspace)
+  local workspace = M.find_venv_dir(workspace)
   if workspace == "" then return "" end
 
-  if not Helper.is_existing_dir(workspace) then workspace = vim.fs.dirname(workspace) end
+  local util = require("lspconfig.util")
+  local util_path = util.path
+  return util_path.join(workspace, "bin", "python")
+end
 
+function M.find_venv_dir(workspace)
   -- If the virtualenv is activated,
-  if vim.env.VIRTUAL_ENV then
-    local util = require("lspconfig.util")
-    local util_path = util.path
-    return util_path.join(vim.env.VIRTUAL_ENV, "bin", "python")
-  end
+  if vim.env.VIRTUAL_ENV then return vim.env.VIRTUAL_ENV end
+
+  -- Check if it is a valid directory
+  if workspace == "" then return "" end
+  if not Helper.is_existing_dir(workspace) then workspace = vim.fs.dirname(workspace) end
 
   while workspace ~= nil and workspace ~= "" and workspace ~= "/" do
     local python = vim.fn.glob(workspace .. "/" .. "*/bin/python")
-    if vim.fn.executable(python) == 1 then return python end
+    if vim.fn.executable(python) == 1 then
+      local venv_root = vim.fn.fnamemodify(python, ":h:h")
+      return venv_root
+    end
 
     local old_workspace = workspace
     workspace = vim.fs.dirname(workspace)
@@ -59,6 +67,45 @@ function M.get_project_root(file_path)
   -- maybe use vim.fn.glob
   local venv_regex = "/[a-zA-Z0-9_-]*/bin/python"
   return python:gsub(venv_regex, "")
+end
+
+local function search_python_files(project_root, callback)
+  local venv_root = M.find_venv_dir(project_root)
+  local dirs_to_skip = {
+    venv_root,
+    project_root .. "/build",
+  }
+
+  local function scan_directory(directory)
+    if vim.tbl_contains(dirs_to_skip, directory) then return end
+
+    local handle = vim.loop.fs_scandir(directory)
+    while handle do
+      local name, type = vim.loop.fs_scandir_next(handle)
+      if not name then break end
+      local full_path = directory .. "/" .. name
+      if type == "directory" then
+        scan_directory(full_path)
+      elseif name:match("%.py$") then
+        callback(full_path)
+      end
+    end
+  end
+  scan_directory(project_root)
+end
+
+function M.add_python_dap_configuration(project_root)
+  search_python_files(project_root, function(current_file)
+    local launch_name = "Launch " .. string.gsub(current_file, "^" .. project_root .. "/", "")
+
+    table.insert(require("dap").configurations.python, {
+      type = "python",
+      request = "launch",
+      name = launch_name,
+      program = current_file,
+      console = "integratedTerminal",
+    })
+  end)
 end
 
 return M
