@@ -61,7 +61,6 @@ function M.setup()
 end
 
 function M.on_attach(client, bufnr)
-  M.load_plugins(client, bufnr)
   M.set_keymaps(client.name, bufnr)
   M.highlight_document(client)
 end
@@ -78,8 +77,6 @@ function M.highlight_document(client)
     augroup END
   ]])
 end
-
-function M.load_plugins(client, bufnr) end
 
 function M.set_keymaps(client_name, bufnr)
   local fmt = function(cmd)
