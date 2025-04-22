@@ -29,17 +29,13 @@ function M.setup_lsp(mason_lsp_config)
   })
 
   -- These LSPs will be setup manually or by a plugin
-  local do_not_auto_setup = { "tsserver", "ts_ls", "rust_analyzer", "eslint", "tailwindcss" }
+  local do_not_auto_setup = { "tsserver", "ts_ls", "rust_analyzer" }
 
   lspconfig.util.default_config = default
   for _, server_name in ipairs(mason_lsp_config.get_installed_servers()) do
     local can_be_setup = not vim.tbl_contains(do_not_auto_setup, server_name)
     if can_be_setup then vim.lsp.enable(server_name) end
   end
-
-  -- TODO: Update, after the pull request was merged: https://github.com/neovim/nvim-lspconfig/pull/3731
-  lspconfig["eslint"].setup({})
-  lspconfig["tailwindcss"].setup({})
 end
 
 return M
