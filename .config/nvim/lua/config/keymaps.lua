@@ -80,3 +80,15 @@ map(
   function() move_registery("+", '"') end,
   { noremap = true, desc = "move contents of anon register to system cliboard register" }
 )
+
+local function gf_passthrough()
+  local current_line = vim.api.nvim_get_current_line()
+  local URL_REGEX = "https?://[a-zA-Z0-9._-]+[a-zA-Z0-9._#/=&?:+%%-]+[a-zA-Z0-9/]"
+
+  if current_line:match(URL_REGEX) then
+    vim.fn.jobstart({ "xdg-open", current_line }, { detach = true })
+  else
+    vim.cmd("normal! gf")
+  end
+end
+map("n", "gf", function() gf_passthrough() end, { noremap = true, desc = "" })
