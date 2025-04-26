@@ -99,6 +99,7 @@ function M.set_keymaps(client_name, bufnr)
   map("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts) -- gri
   map("n", "<leader>rn", lsp("buf.rename()"), opts) -- or grn
   map("n", "<leader>ca", lsp("buf.code_action()"), opts) -- or gra
+  map("n", "K", lsp("buf.hover({ border = 'rounded'})"), opts)
 
   map("n", "gl", diagnostic("open_float()"), opts)
   map("n", "[d", diagnostic("jump({ count=-1 })") .. "zz", opts)
