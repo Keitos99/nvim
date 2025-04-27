@@ -1,5 +1,6 @@
 return {
   {
+    -- Setups the luaLS LSP
     "folke/lazydev.nvim",
     ft = "lua", -- only load on lua files
     opts = {
