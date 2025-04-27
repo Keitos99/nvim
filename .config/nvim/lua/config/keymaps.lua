@@ -85,10 +85,22 @@ local function gf_passthrough()
   local current_line = vim.api.nvim_get_current_line()
   local URL_REGEX = "https?://[a-zA-Z0-9._-]+[a-zA-Z0-9._#/=&?:+%%-]+[a-zA-Z0-9/]"
 
-  if current_line:match(URL_REGEX) then
-    vim.fn.jobstart({ "xdg-open", current_line }, { detach = true })
-  else
+  local cursor_col = vim.api.nvim_win_get_cursor(0)[2] + 1 -- Convert to 1-based index
+  local start_pos, end_pos = current_line:find(URL_REGEX)
+  if not start_pos or not end_pos then
     vim.cmd("normal! gf")
+    return
   end
+
+  -- Line contains a URL.
+  local is_cursor_on_url = cursor_col >= start_pos and cursor_col <= end_pos
+  if not is_cursor_on_url then
+    vim.cmd("normal! gf")
+    return
+  end
+
+  -- Cursor is on a URL. We can open it.
+  local url = current_line:sub(start_pos, end_pos)
+  vim.fn.jobstart({ "xdg-open", url }, { detach = true })
 end
 map("n", "gf", function() gf_passthrough() end, { noremap = true, desc = "" })
