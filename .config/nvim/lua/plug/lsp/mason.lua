@@ -1,8 +1,8 @@
 local M = {
-  "williamboman/mason.nvim", -- Installer for LSP, DAP, Linter and Formatter
+  "mason-org/mason.nvim", -- Installer for LSP, DAP, Linter and Formatter
   build = ":MasonUpdate", -- :MasonUpdate updates registry contents
   dependencies = {
-    "williamboman/mason-lspconfig.nvim", -- connects mason with lspconfig
+    "mason-org/mason-lspconfig.nvim", -- connects mason with lspconfig
   },
   event = "BufReadPost",
   cmd = "Mason",
