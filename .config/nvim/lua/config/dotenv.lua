@@ -84,3 +84,5 @@ vim.api.nvim_create_autocmd("BufWritePost", {
   pattern = dotenv.config.file_name,
   callback = function() dotenv.command() end,
 })
+
+return dotenv
