@@ -4,9 +4,6 @@ local lsp = require("plug.lsp.handlers")
 local HOME = vim.env.HOME
 local XDG_DATA_HOME = vim.env.XDG_DATA_HOME
 
-local JAVA_VM_ARGS = vim.env.NVIM_JDTLS_VM_ARGS and vim.env.NVIM_JDTLS_VM_ARGS or ""
-local JAVA_ARGS = vim.env.NVIM_JDTLS_ARGS and vim.env.NVIM_JDTLS_ARGS or ""
-
 local LSP_SERVER = HOME .. "/dev/eclipse/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/"
 local JAVA = HOME .. "/.local/jdks/jdk-21.0.6+7/bin/java" -- NOTE: must be the same as the one to compile jdtls and jdtls-dap
 local WORKSPACE_PATH = XDG_DATA_HOME .. "/jdtls-workspace/"
@@ -136,6 +133,9 @@ return {
   },
   capabilities = capabilities,
   on_attach = function(_, bufnr)
+    local JAVA_VM_ARGS = vim.env.NVIM_JDTLS_VM_ARGS and vim.env.NVIM_JDTLS_VM_ARGS or ""
+    local JAVA_ARGS = vim.env.NVIM_JDTLS_ARGS and vim.env.NVIM_JDTLS_ARGS or ""
+
     jdtls.setup_dap({
       hotcodereplace = "auto",
       config_overrides = {
