@@ -5,3 +5,4 @@ require("config.dotenv")
 require("config.lazy") -- load my plugins
 require("config.redir")
 require("config.autocmds")
+require("config.user_cmds")

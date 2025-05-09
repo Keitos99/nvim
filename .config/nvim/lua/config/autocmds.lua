@@ -61,6 +61,8 @@ autocmd("LspAttach", {
 
     local lsp = require("plug.lsp.handlers")
     lsp.on_attach(client, bufnr)
+
+    if client.server_capabilities.inlayHintProvider then vim.lsp.inlay_hint.enable(true, { bufnr = bufnr }) end
   end,
 })
 

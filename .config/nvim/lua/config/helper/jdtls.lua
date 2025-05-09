@@ -151,6 +151,7 @@ return {
   -- https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
   settings = {
     java = {
+      inlayHints = { parameterNames = { enabled = "all" } },
       signatureHelp = { enabled = true },
       configuration = {
         runtimes = {
