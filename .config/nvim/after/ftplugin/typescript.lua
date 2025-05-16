@@ -1,8 +1,8 @@
 local dap = require("dap")
 local dap_utils = require("dap.utils")
-local mason_registry = require("mason-registry")
-local js_debug_package = mason_registry.get_package("js-debug-adapter")
-local js_debug_path = js_debug_package:get_install_path() .. "/js-debug-adapter"
+-- local mason_registry = require("mason-registry")
+-- local js_debug_package = mason_registry.get_package("js-debug-adapter")
+local js_debug_path = "js-debug-adapter"
 
 local defaulf_adapter_config = {
   type = "server",
