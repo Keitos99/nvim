@@ -32,6 +32,8 @@ function M.setup_lsp(mason_lsp_config)
   local do_not_auto_setup = { "tsserver", "ts_ls", "rust_analyzer" }
 
   lspconfig.util.default_config = default
+
+  vim.lsp.enable("jdtls")
   for _, server_name in ipairs(mason_lsp_config.get_installed_servers()) do
     local can_be_setup = not vim.tbl_contains(do_not_auto_setup, server_name)
     if can_be_setup then vim.lsp.enable(server_name) end
