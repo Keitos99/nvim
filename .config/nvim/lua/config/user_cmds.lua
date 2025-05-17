@@ -9,3 +9,10 @@ user_cmds("InlayToggle", function()
 end, {
   desc = "Toggle the LSP Inlay Hints",
 })
+
+--- Trims trailing whitespace
+user_cmds("TrimWhitespace", function()
+  local win_save = vim.fn.winsaveview()
+  vim.cmd([[keeppatterns %s/\s\+$//ec]])
+  vim.fn.winrestview(win_save)
+end, { nargs = 0 })
