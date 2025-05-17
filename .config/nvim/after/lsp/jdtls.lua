@@ -20,7 +20,10 @@ local JAR_PATTERNS = {
 
 -- Find the root of the project
 local ROOT_DIR = require("jdtls.setup").find_root(ROOT_MARKERS)
-assert(ROOT_DIR ~= nil and ROOT_DIR ~= "", "Root directory can not be determined!")
+if ROOT_DIR == nil or ROOT_DIR == "" then
+  -- Root directory cannot be determined. Do not setup the LSP.
+  return {}
+end
 
 local PROJECT_NAME = vim.fn.fnamemodify(ROOT_DIR, ":p:h:t")
 local WORKSPACE_DIR = WORKSPACE_PATH .. PROJECT_NAME
