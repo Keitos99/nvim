@@ -83,3 +83,15 @@ autocmd("User", {
     vim.on_key(toggle_hlsearch, ns)
   end,
 })
+
+-- if vim.fn.system("uname -r"):lower():match("microsoft") then
+--   vim.api.nvim_create_augroup("Yank", { clear = true })
+--
+--   autocmd("TextYankPost", {
+--     group = "Yank",
+--     callback = function()
+--       local text = table.concat(vim.fn.getreg('"', 1, true), "\n")
+--       vim.fn.system("/mnt/c/Windows/System32/clip.exe", text)
+--     end,
+--   })
+-- end
