@@ -1,7 +1,7 @@
 local M = {}
 
 M.mason = {
-  tools = { "sql-formatter", "stylua" },
+  tools = { "sql-formatter", "stylua", "eslint_d", "ruff" },
   lsps = {
     "lua_ls",
     "vimls",
