@@ -1,17 +1,14 @@
-local NOTES_DIR = vim.fn.expand("~") .. "/Documents/Notes/"
+local NOTES_DIR = vim.fn.expand("~") .. "/Documents/Notes"
 
 return {
-  "epwalsh/obsidian.nvim",
+  "obsidian-nvim/obsidian.nvim",
   version = "*", -- recommended, use latest release instead of latest commit
   lazy = true,
   cond = require("config.helper").is_existing_dir(NOTES_DIR),
   ft = "markdown",
   -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
   cmd = {
-    "ObsidianSearch",
-    "ObsidianYesterday",
-    "ObsidianToday",
-    "ObsidianTomorrow",
+    "Obsidian",
   },
   event = {
     "BufReadPre " .. NOTES_DIR .. "/**.md",
