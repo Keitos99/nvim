@@ -14,6 +14,7 @@ M.mason = {
     "eslint", -- eslint-lsp
     "tailwindcss",
     "cssls",
+    "harper-ls",
   },
   install_dir = vim.fn.stdpath("data") .. "/mason",
 }
