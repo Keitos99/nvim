@@ -1,7 +1,18 @@
 local M = {}
 
 M.mason = {
-  tools = { "sql-formatter", "stylua", "eslint_d", "ruff", "selene" },
+  tools = {
+    "sql-formatter",
+    "stylua",
+    "eslint_d",
+    "ruff",
+    "selene",
+    "black",
+    "isort",
+    "beautysh",
+    "prettier",
+    "prettierd",
+  },
   lsps = {
     "lua_ls",
     "vimls",
@@ -14,7 +25,7 @@ M.mason = {
     "eslint", -- eslint-lsp
     "tailwindcss",
     "cssls",
-    "harper-ls",
+    "harper_ls",
   },
   install_dir = vim.fn.stdpath("data") .. "/mason",
 }
@@ -50,6 +61,7 @@ M.tree_sitter_parsers = {
   "markdown_inline",
   "latex",
   "vimdoc",
+  "rust",
 }
 
 return M
