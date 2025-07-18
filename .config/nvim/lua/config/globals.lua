@@ -26,6 +26,7 @@ M.mason = {
     "tailwindcss",
     "cssls",
     "harper_ls",
+    "rust_analyzer",
   },
   install_dir = vim.fn.stdpath("data") .. "/mason",
 }
