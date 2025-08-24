@@ -11,7 +11,6 @@ return {
   {
     "mfussenegger/nvim-dap", -- debug adapter protocol client implementation for neovim
     dependencies = {
-      "nvim-neotest/nvim-nio", -- dependency of nvim-dap-ui
       "igorlfs/nvim-dap-view",
     },
     config = function()

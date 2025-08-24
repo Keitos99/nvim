@@ -136,26 +136,9 @@ return {
         },
       })
 
-      require("telescope").load_extension("projects")
       require("telescope").load_extension("fzf")
       require("telescope").load_extension("ui-select")
     end,
-  },
-  {
-    "folke/which-key.nvim",
-    event = "VeryLazy",
-    opts = {
-      plugins = { spelling = true },
-      defaults = {
-        mode = { "n", "v" },
-        ["g"] = { name = "+goto" },
-        ["]"] = { name = "+next" },
-        ["["] = { name = "+prev" },
-        ["<leader>d"] = { name = "+debug" },
-        ["<leader>f"] = { name = "+find" },
-        ["<leader>r"] = { name = "+rename" },
-      },
-    },
   },
   {
     -- for automatically highlighting other uses of the word under the cursor,
