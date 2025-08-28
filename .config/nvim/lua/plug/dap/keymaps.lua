@@ -30,19 +30,13 @@ return {
     { silent = true },
   },
   {
-    "<leader>df",
-    "<CMD>lua require('dapui').float_element()<CR>",
-    desc = "Toggle UI",
-    { silent = true },
-  },
-  {
     "<leader>dR",
-    "<CMD>lua require('dapui').float_element('repl', {position = 'center', enter = true})<CR>",
+    function() require("dap").repl.open() end,
     desc = "Toggle repl",
     { silent = true },
   },
 
-  { "<F1>", ":lua require('dap-view').toggle(true)<CR>" },
+  { "<F1>", ":lua require('dap-view').toggle(false)<CR>" },
 
   { "<F8>", ":lua require('dap').step_over()<CR>" },
   { "<F9>", ":lua require('dap').continue()<CR>" },
