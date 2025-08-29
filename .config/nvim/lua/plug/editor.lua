@@ -132,47 +132,6 @@ return {
     end,
   },
   {
-    -- for automatically highlighting other uses of the word under the cursor,
-    -- using either LSP, Tree-sitter, or regex matching.
-    "RRethy/vim-illuminate",
-    event = { "BufReadPost", "BufWritePost", "BufNewFile" },
-
-    config = function()
-      local illuminate = require("illuminate")
-      -- <A-n> and <A-p> for moving between references
-      -- <A-i> for as a textopbject under the cursor TODO: no plan what that means
-
-      illuminate.configure({
-        -- providers: provider used to get references in the buffer, ordered by priority
-        providers = {
-          "lsp",
-          "treesitter",
-          "regex",
-        },
-        delay = 100, -- delay in milliseconds
-        filetype_overrides = {
-          -- HACK: disabling treesitter provider because on "big" files it seems to slow down the scrolling. Is this a bug?
-          ["java"] = {
-            providers = {
-              "lsp",
-              "regex",
-            },
-          },
-          -- HACK: ignore querys, because it slows down the navigation
-          ["query"] = { providers = {} },
-        },
-        filetypes_denylist = {
-          "dirvish",
-          "fugitive",
-          "NvimTree",
-        },
-        under_cursor = true,
-        large_file_cutoff = nil,
-        large_file_overrides = nil,
-      })
-    end,
-  },
-  {
     "folke/todo-comments.nvim",
     dependencies = "nvim-lua/plenary.nvim",
     cmd = { "TodoTelescope" },
