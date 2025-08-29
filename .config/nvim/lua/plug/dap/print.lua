@@ -1,6 +1,5 @@
 local M = {
   "andrewferrier/debugprint.nvim",
-  lazy = false,
   opts = {
     print_tag = "AGYP",
     filetypes = {
@@ -17,6 +16,16 @@ local M = {
         right_var = "))",
       },
     },
+  },
+  keys = {
+    "g?p",
+    "g?P",
+    "g?v",
+    "g?V",
+    "g?sp",
+    "g?sv",
+    { "g?v", mode = "v" },
+    { "g?V", mode = "v" },
   },
 }
 
