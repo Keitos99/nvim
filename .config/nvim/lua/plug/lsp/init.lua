@@ -15,10 +15,34 @@ local M = {
       vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, lsp_config)
     end,
   },
-  require("plug.conform"), -- formatter and linter
-  require("plug.lsp.mason"),
-  require("plug.lsp.lines"),
-  require("plug.lsp.fidget"),
+  {
+    url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+    name = "lsp_lines",
+    event = "LspAttach",
+    opt = true,
+    keys = {
+      {
+        "<A-d>",
+        function() require("lsp_lines").toggle() end,
+      },
+    },
+  },
+  {
+    "j-hui/fidget.nvim",
+    event = "LspAttach",
+    opts = true,
+  },
+  {
+    "antosha417/nvim-lsp-file-operations",
+    event = "LspAttach",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-tree.lua",
+    },
+    opts = true,
+  },
+
+  -- Language specific LSP plugins
   {
     "mfussenegger/nvim-jdtls",
     ft = "java",
