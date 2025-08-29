@@ -30,7 +30,7 @@ local M = {
   {
     "j-hui/fidget.nvim",
     event = "LspAttach",
-    opts = true,
+    opts = {},
   },
   {
     "antosha417/nvim-lsp-file-operations",
