@@ -1,5 +1,7 @@
 local M = {}
 
+M.OBSIDIAN_TEMPLATES_DIR = vim.fn.expand("~/Documents/Documents/Notes/templates/")
+
 M.mason = {
   tools = {
     "sql-formatter",

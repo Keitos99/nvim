@@ -23,8 +23,7 @@ return {
       local bufname = vim.api.nvim_buf_get_name(bufnr)
 
       -- Obsidian templates should not be formatted
-      local OBSIDIAN_TEMPLATES_DIR = vim.fn.expand("~/Documents/Documents/Notes/templates/")
-      local is_template = bufname:find("^" .. OBSIDIAN_TEMPLATES_DIR) ~= nil
+      local is_template = bufname:find("^" .. require("config.globals").OBSIDIAN_TEMPLATES_DIR) ~= nil
       if is_template then return end
 
       -- detect slow formatter and run those asynchronously
