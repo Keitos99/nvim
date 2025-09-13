@@ -8,7 +8,7 @@ local M = {
   cmd = "Mason",
 }
 
-function installNonLSPTools(tools)
+local function installNonLSPTools(tools)
   local mr = require("mason-registry")
   for _, tool in ipairs(tools) do
     local p = mr.get_package(tool)
