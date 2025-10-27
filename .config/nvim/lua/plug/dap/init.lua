@@ -68,9 +68,8 @@ return {
   require("plug.dap.print"),
 
   {
-    "mfussenegger/nvim-dap-python",
+    "https://codeberg.org/mfussenegger/nvim-dap-python",
     ft = "python",
-    priority = 10000,
     config = function()
       local helper = require("config.helper.python")
       local py_dap = require("dap-python")
