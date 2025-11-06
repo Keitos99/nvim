@@ -3,6 +3,10 @@ local lsp = require("plug.lsp.handlers")
 
 local HOME = vim.env.HOME
 local XDG_DATA_HOME = vim.env.XDG_DATA_HOME
+if XDG_DATA_HOME == nil or XDG_DATA_HOME == "" then
+  -- Env-Variables will not be loaded if nvim was started by e.g. nautilus TODO: why?
+  return {}
+end
 
 local LSP_SERVER = HOME .. "/dev/eclipse/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/"
 local JAVA = HOME .. "/.local/jdks/jdk-23.0.2+7/bin/java" -- NOTE: must be the same as the one to compile jdtls and jdtls-dap
