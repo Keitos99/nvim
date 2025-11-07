@@ -164,28 +164,27 @@ return {
         runtimes = {
           {
             name = "JavaSE-1.8",
-            path = HOME .. "/.local/jdks/jdk8u332-b09/",
-          },
-          {
-            name = "JavaSE-11",
-            path = HOME .. "/.local/jdks/jdk-11.0.9.1+1/",
-          },
-          {
-            name = "JavaSE-15",
-            path = HOME .. "/.local/jdks/jdk-15.0.2+7/",
-          },
-          {
-            name = "JavaSE-16",
-            path = HOME .. "/.local/jdks/jdk-16.0.1+9/",
+            path = HOME .. "/.local/share/jdks/jdk8u332-b09/",
           },
           {
             name = "JavaSE-17",
-            path = HOME .. "/.local/jdks/jdk-17.0.2+8/",
+            path = HOME .. "/.local/share/jdks/jdk-17.0.2+8/",
             default = true,
           },
           {
-            name = "JavaSE-18",
-            path = HOME .. "/.local/jdks/jdk-18+36/",
+            name = "JavaSE-21",
+            path = HOME .. "/.local/share/jdks/jdk-21.0.6+7/",
+            default = true,
+          },
+          {
+            name = "JavaSE-23",
+            path = HOME .. "/.local/share/jdks/jdk-23.0.2+7/",
+            default = true,
+          },
+          {
+            name = "JavaSE-25",
+            path = HOME .. "/.local/share/jdks/jdk-25.0.1+8/",
+            default = true,
           },
         },
       },
