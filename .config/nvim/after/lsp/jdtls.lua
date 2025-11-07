@@ -9,7 +9,7 @@ if XDG_DATA_HOME == nil or XDG_DATA_HOME == "" then
 end
 
 local LSP_SERVER = HOME .. "/dev/eclipse/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/"
-local JAVA = HOME .. "/.local/jdks/jdk-23.0.2+7/bin/java" -- NOTE: must be the same as the one to compile jdtls and jdtls-dap
+local JAVA = HOME .. "/.local/share/jdks/jdk-25.0.1+8/bin/java" -- NOTE: must be the same as the one to compile jdtls and jdtls-dap
 local WORKSPACE_PATH = XDG_DATA_HOME .. "/jdtls-workspace/"
 local CONFIG = "linux"
 
