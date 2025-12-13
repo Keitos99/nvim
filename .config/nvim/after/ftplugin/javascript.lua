@@ -4,7 +4,7 @@ local js_debug_path = "js-debug-adapter"
 
 local defaulf_adapter_config = {
   type = "server",
-  host = "127.0.0.1",
+  host = "localhost",
   port = 8123,
   executable = {
     command = js_debug_path,
