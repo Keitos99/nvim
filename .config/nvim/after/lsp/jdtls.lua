@@ -139,20 +139,6 @@ return {
     WORKSPACE_DIR,
   },
   capabilities = capabilities,
-  on_attach = function(_, bufnr)
-    local JAVA_VM_ARGS = vim.env.NVIM_JDTLS_VM_ARGS and vim.env.NVIM_JDTLS_VM_ARGS or ""
-    local JAVA_ARGS = vim.env.NVIM_JDTLS_ARGS and vim.env.NVIM_JDTLS_ARGS or ""
-
-    jdtls.setup_dap({
-      hotcodereplace = "auto",
-      config_overrides = {
-        vmArgs = JAVA_VM_ARGS,
-        args = JAVA_ARGS,
-      },
-    })
-
-    require("jdtls.dap").setup_dap_main_class_configs() -- needs to be called to activate the dap function
-  end,
   root_dir = ROOT_DIR,
   -- NOTE: look here for a list of options:
   -- https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
