@@ -8,6 +8,7 @@ end
 
 -- overriding so that the project paths are correctly found?
 local helper = require("config.helper.python")
+local current_file = vim.api.nvim_buf_get_name(0)
 vim.env.PYTHONPATH = helper.get_project_root(current_file)
 
 -- adding my own launch configurations to dap launcher
