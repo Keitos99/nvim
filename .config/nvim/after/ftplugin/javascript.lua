@@ -27,17 +27,17 @@ for _, language in ipairs(js_based_languages) do
     vim.tbl_extend("force", base_config, {
       type = "pwa-node",
       request = "launch",
-      name = "Launch file (ts-node-dev)",
-      runtimeExecutable = "${workspaceFolder}/node_modules/.bin/ts-node-dev",
-      runtimeArgs = { "--respawn" },
+      name = "Launch file",
+      runtimeExecutable = "node",
+      runtimeArgs = { "--inspect" },
       program = "${file}",
     }),
     vim.tbl_extend("force", base_config, {
       type = "pwa-node",
       request = "launch",
-      name = "Launch file",
-      runtimeExecutable = "node",
-      runtimeArgs = { "--inspect" },
+      name = "Launch file (ts-node-dev)",
+      runtimeExecutable = "${workspaceFolder}/node_modules/.bin/ts-node-dev",
+      runtimeArgs = { "--respawn" },
       program = "${file}",
     }),
     vim.tbl_extend("force", base_config, {

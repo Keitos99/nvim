@@ -14,6 +14,7 @@ M.mason = {
     "beautysh",
     "prettier",
     "prettierd",
+    "js-debug-adapter",
   },
   lsps = {
     "lua_ls",
