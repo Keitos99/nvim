@@ -4,7 +4,8 @@ return {
   {
     -- Fuzzy finder
     "nvim-telescope/telescope.nvim",
-    branch = "0.1.x", -- release branch, which can have breaking changes
+    version = "*",
+    lazy = false, -- Replaces the vim.ui.select UI and should therefore not be lazy loaded.
     dependencies = {
       { "nvim-lua/plenary.nvim" },
       { "nvim-telescope/telescope-ui-select.nvim" },
@@ -14,9 +15,7 @@ return {
         cond = function() return vim.fn.executable("make") == 1 end,
       },
     },
-    cmd = { "Telescope" },
     keys = {
-
       { "<leader>ff", "<cmd>Telescope find_files<cr>" },
       {
         "<leader>fg",
@@ -134,24 +133,12 @@ return {
   {
     "folke/todo-comments.nvim",
     dependencies = "nvim-lua/plenary.nvim",
-    cmd = { "TodoTelescope" },
+    cmd = { "TodoTelescope", "TodoLocList", "TodoQuickFix" },
     event = "VeryLazy",
-    keys = {
-      {
-        "]t",
-        function() require("todo-comments").jump_next() end,
-        desc = "Jump to the next todo comment",
-      },
-      {
-        "[t",
-        function() require("todo-comments").jump_prev() end,
-        desc = "Jump to the previous todo comment",
-      },
-    },
     opts = {
-      signs = true, -- show icons in the signs column
-      sign_priority = 8, -- sign priority
-      -- keywords recognized as todo comments
+      signs = false, -- Do not show icons in the signs column
+      sign_priority = 8, -- Sign priority
+      -- Keywords recognized as to-do comments
       keywords = {
         TODO = { icon = icons_todo.TODO, color = "info", alt = { "todo" } },
         FIX = { icon = icons_todo.FIX, color = "error", alt = { "FIXME", "BUG", "FIXIT", "ISSUE" } },
