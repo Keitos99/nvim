@@ -32,7 +32,7 @@ end
 
 local M = {
   "nvim-neotest/neotest",
-  lazy = true,
+  lazy = false,
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
@@ -116,9 +116,7 @@ function M.config()
         dap = { justMyCode = false },
         python = helper.get_python_binary,
       }),
-      require("neotest-jest")({
-        jestCommand = function() return require("neotest-jest.jest-util").getJestCommand(vim.fn.expand("%:p:h")) end,
-      }),
+      require("neotest-jest")({}),
     },
   })
   create_user_cmds()
