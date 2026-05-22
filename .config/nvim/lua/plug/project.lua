@@ -1,7 +1,8 @@
 local M = {
-  "ahmedkhalf/project.nvim",
+  "DrKJeff16/project.nvim",
+  enabled = true,
   config = function()
-    local project = require("project_nvim")
+    local project = require("project")
 
     project.setup({
       logging = false,
