@@ -5,26 +5,29 @@ local M = {
     local project = require("project")
 
     project.setup({
-      logging = false,
       manual_mode = false,
       detection_methods = { "lsp", "pattern" },
-
       patterns = require("config.globals").root_patterns,
-      allow_patterns_for_lsp = true,
-      allow_different_owners = true,
+      exclude_dirs = {},
+      show_hidden = false,
       enable_autochdir = false,
-      historysize = 100,
+      silent_chdir = false,
+      scope_chdir = "global",
+      different_owners = {
+        allow = true,
+      },
+      lsp = {
+        ignore = { "copilot", "harper_ls" },
+        use_pattern_matching = true,
+      },
+      history = {
+        size = 100,
+      },
       telescope = {
         enabled = true,
         sort = "newest",
         prefer_file_browser = false,
       },
-
-      show_hidden = false,
-      ignore_lsp = { "copilot", "harper_ls" },
-      exclude_dirs = {},
-      silent_chdir = false,
-      scope_chdir = "global",
     })
   end,
 }
