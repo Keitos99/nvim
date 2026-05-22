@@ -8,11 +8,6 @@ local M = {
     config = function()
       local lsp = require("plug.lsp.handlers")
       lsp.setup()
-
-      -- boarders of the floating windows should be rounded
-      local lsp_config = { border = "rounded" }
-      vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, lsp_config)
-      vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, lsp_config)
     end,
   },
   {
