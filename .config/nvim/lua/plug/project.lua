@@ -6,7 +6,6 @@ local M = {
 
     project.setup({
       manual_mode = false,
-      detection_methods = { "lsp", "pattern" },
       patterns = require("config.globals").root_patterns,
       exclude_dirs = {},
       show_hidden = false,
@@ -18,7 +17,8 @@ local M = {
       },
       lsp = {
         ignore = { "copilot", "harper_ls" },
-        use_pattern_matching = true,
+        use_pattern_matching = false,
+        no_fallback = true,
       },
       history = {
         size = 100,
