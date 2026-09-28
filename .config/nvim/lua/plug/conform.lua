@@ -15,6 +15,7 @@ return {
       bash = { "beautysh" },
       zsh = { "beautysh" },
       sh = { "beautysh" },
+      java = { "google-java-format" },
     },
 
     format_on_save = function(bufnr)
